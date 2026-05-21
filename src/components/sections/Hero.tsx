@@ -103,7 +103,7 @@ export default function Hero() {
             </a>
           </div>
 
-          <div style={{ marginTop: 48, display: 'flex', gap: 32 }}>
+          <div className="hero-stats" style={{ marginTop: 48, display: 'flex', gap: 100 }}>
             {stats.map(([n, l]) => (
               <div key={l}>
                 <div
@@ -137,8 +137,24 @@ export default function Hero() {
 
       <style>{`
         @media (max-width: 768px) {
-          .hero-graphic-wrap { display: none; }
-          #home .container { grid-template-columns: 1fr !important; }
+          .hero-graphic-wrap { display: block !important; }
+          .hero-stats { display: none !important; }
+          #home {
+            flex-direction: column !important;
+            justify-content: flex-start !important;
+            align-items: center !important;
+            min-height: 100svh !important;
+            padding-top: 120px !important;
+            padding-bottom: 44px !important;
+          }
+          #home .container {
+            display: flex !important;
+            flex-direction: column !important;
+            flex-grow: 1 !important;
+            justify-content: space-between !important;
+            width: 90% !important;
+            max-width: 1240px !important;
+          }
         }
       `}</style>
     </section>

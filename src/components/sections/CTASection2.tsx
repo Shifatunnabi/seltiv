@@ -41,12 +41,12 @@ export default function CTASection2() {
             <h2
               style={{
                 fontSize: 'clamp(2rem, 4vw, 3.8rem)', fontWeight: 800,
-                maxWidth: 680, margin: '0 auto 20px', lineHeight: 1.1,
+                maxWidth: 720, margin: '0 auto 20px', lineHeight: 1.1,
               }}
             >
               Have an Idea?<br />
               <span style={{ color: 'var(--green-neon)', textShadow: '0 0 40px rgba(0,230,118,0.4)' }}>
-                Let&apos;s Build the Future Together.
+                Let&apos;s Build the<br />Future Together.
               </span>
             </h2>
             <p style={{ color: 'var(--muted)', fontSize: 16, maxWidth: 480, margin: '0 auto 40px', lineHeight: 1.7 }}>

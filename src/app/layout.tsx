@@ -3,9 +3,14 @@ import './globals.css';
 import CustomCursor from '@/components/ui/CustomCursor';
 
 export const metadata: Metadata = {
-  title: 'Seltiv — Growth & Technology Agency',
+  title: 'Seltiv',
   description:
     'Your all-in-one growth & technology partner for branding, marketing, and software solutions that scale.',
+  icons: {
+    icon: '/icon.png',
+    shortcut: '/icon.png',
+    apple: '/icon.png',
+  },
 };
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {

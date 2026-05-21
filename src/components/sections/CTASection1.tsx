@@ -15,7 +15,7 @@ export default function CTASection1() {
   const inView = useInView(ref, { once: true, margin: '-80px' });
 
   return (
-    <section className="section" style={{ background: 'var(--bg2)' }} ref={ref}>
+    <section className="section" style={{ background: 'var(--bg2)', overflow: 'hidden' }} ref={ref}>
       <div className="container">
         <div
           style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 70, alignItems: 'center' }}
@@ -49,22 +49,6 @@ export default function CTASection1() {
               </span>
             </div>
 
-            {/* Floating badge */}
-            <div
-              className="glass"
-              style={{
-                position: 'absolute', bottom: -20, right: -20,
-                padding: '14px 20px', borderRadius: 14,
-                animation: 'floatCard 4s ease-in-out infinite',
-              }}
-            >
-              <div style={{ fontSize: 22, fontWeight: 800, fontFamily: "'Syne', sans-serif", color: 'var(--green-neon)' }}>
-                98%
-              </div>
-              <div style={{ fontSize: 11, color: 'var(--muted)', fontFamily: 'Space Grotesk, sans-serif' }}>
-                Client Satisfaction
-              </div>
-            </div>
           </motion.div>
 
           {/* Right: content */}

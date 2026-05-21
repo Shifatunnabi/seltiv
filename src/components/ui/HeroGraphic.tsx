@@ -3,6 +3,7 @@
 export default function HeroGraphic() {
   return (
     <div
+      className="hero-graphic-container"
       style={{
         position: 'relative',
         width: '100%',
@@ -61,6 +62,7 @@ export default function HeroGraphic() {
 
       {/* Floating metric cards */}
       <div
+        className="hero-card-grid"
         style={{
           position: 'relative',
           zIndex: 2,
@@ -68,21 +70,22 @@ export default function HeroGraphic() {
           gridTemplateColumns: '1fr 1fr',
           gap: 14,
           padding: 20,
+          width: '100%',
         }}
       >
         {/* Card 1 — MRR Growth */}
         <div
-          className="glass"
+          className="glass hero-card"
           style={{
             padding: '18px 20px',
             animation: 'floatCard 4s ease-in-out infinite',
-            minWidth: 160,
           }}
         >
-          <div style={{ fontSize: 11, color: '#a0aec0', marginBottom: 6, fontFamily: 'Space Grotesk, sans-serif' }}>
+          <div className="hero-card-label" style={{ fontSize: 11, color: '#a0aec0', marginBottom: 6, fontFamily: 'Space Grotesk, sans-serif' }}>
             MRR Growth
           </div>
           <div
+            className="hero-metric"
             style={{
               fontSize: 26,
               fontWeight: 800,
@@ -93,8 +96,8 @@ export default function HeroGraphic() {
           >
             +147%
           </div>
-          <div style={{ marginTop: 10, height: 36 }}>
-            <svg width="100%" height="36" viewBox="0 0 120 36">
+          <div className="hero-chart" style={{ marginTop: 10, height: 36 }}>
+            <svg width="100%" height="100%" viewBox="0 0 120 36">
               <polyline
                 points="0,30 20,22 40,18 60,14 80,8 100,5 120,2"
                 fill="none"
@@ -119,20 +122,20 @@ export default function HeroGraphic() {
 
         {/* Card 2 — Projects Launched */}
         <div
-          className="glass"
+          className="glass hero-card"
           style={{
             padding: '18px 20px',
             animation: 'floatCard 4s ease-in-out infinite 1s',
             background: 'linear-gradient(135deg, rgba(14,107,63,0.2), rgba(8,13,20,0.8))',
           }}
         >
-          <div style={{ fontSize: 11, color: '#a0aec0', fontFamily: 'Space Grotesk, sans-serif', marginBottom: 8 }}>
+          <div className="hero-card-label" style={{ fontSize: 11, color: '#a0aec0', fontFamily: 'Space Grotesk, sans-serif', marginBottom: 8 }}>
             Projects Launched
           </div>
-          <div style={{ fontSize: 32, fontWeight: 800, fontFamily: "'Syne', sans-serif", color: '#fff' }}>
+          <div className="hero-metric" style={{ fontSize: 32, fontWeight: 800, fontFamily: "'Syne', sans-serif", color: '#fff' }}>
             50<span style={{ color: '#00e676' }}>+</span>
           </div>
-          <div style={{ marginTop: 6, display: 'flex', gap: 4 }}>
+          <div className="hero-bars" style={{ marginTop: 6, display: 'flex', gap: 4 }}>
             {[0.9, 0.7, 1, 0.6, 0.85, 0.75, 0.95].map((h, i) => (
               <div
                 key={i}
@@ -150,7 +153,7 @@ export default function HeroGraphic() {
 
         {/* Card 3 — Happy Clients */}
         <div
-          className="glass"
+          className="glass hero-card"
           style={{
             padding: '18px 20px',
             animation: 'floatCard 4s ease-in-out infinite 0.5s',
@@ -160,6 +163,7 @@ export default function HeroGraphic() {
           }}
         >
           <div
+            className="hero-icon"
             style={{
               width: 44,
               height: 44,
@@ -176,26 +180,26 @@ export default function HeroGraphic() {
             ✦
           </div>
           <div>
-            <div style={{ fontSize: 22, fontWeight: 800, fontFamily: "'Syne', sans-serif" }}>
+            <div className="hero-metric" style={{ fontSize: 22, fontWeight: 800, fontFamily: "'Syne', sans-serif" }}>
               30<span style={{ color: '#00e676' }}>+</span>
             </div>
-            <div style={{ fontSize: 11, color: '#a0aec0', fontFamily: 'Space Grotesk, sans-serif' }}>Happy Clients</div>
+            <div className="hero-card-label" style={{ fontSize: 11, color: '#a0aec0', fontFamily: 'Space Grotesk, sans-serif' }}>Happy Clients</div>
           </div>
         </div>
 
         {/* Card 4 — Satisfaction Rate */}
         <div
-          className="glass"
+          className="glass hero-card"
           style={{
             padding: '18px 20px',
             animation: 'floatCard 4s ease-in-out infinite 1.5s',
             background: 'linear-gradient(135deg, rgba(246,201,14,0.08), rgba(8,13,20,0.8))',
           }}
         >
-          <div style={{ fontSize: 11, color: '#a0aec0', fontFamily: 'Space Grotesk, sans-serif', marginBottom: 8 }}>
+          <div className="hero-card-label" style={{ fontSize: 11, color: '#a0aec0', fontFamily: 'Space Grotesk, sans-serif', marginBottom: 8 }}>
             Satisfaction Rate
           </div>
-          <div style={{ fontSize: 28, fontWeight: 800, fontFamily: "'Syne', sans-serif", color: '#f6c90e' }}>98%</div>
+          <div className="hero-metric" style={{ fontSize: 28, fontWeight: 800, fontFamily: "'Syne', sans-serif", color: '#f6c90e' }}>98%</div>
           <div style={{ marginTop: 8, height: 6, background: 'rgba(255,255,255,0.08)', borderRadius: 3, overflow: 'hidden' }}>
             <div
               style={{

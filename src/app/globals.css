@@ -68,7 +68,7 @@
   cursor: none !important;
 }
 
-html { scroll-behavior: smooth; }
+html { scroll-behavior: smooth; overflow-x: hidden; }
 
 body {
   font-family: 'Space Grotesk', sans-serif;
@@ -196,7 +196,7 @@ h1, h2, h3, h4 {
 /* ─────────────── Container ─────────────── */
 .container {
   width: 90%;
-  max-width: 1240px;
+  max-width: 960px;
   margin: 0 auto;
 }
 
@@ -206,22 +206,18 @@ h1, h2, h3, h4 {
   align-items: center;
   gap: 8px;
   font-family: 'Inter', sans-serif;
-  font-size: 12px;
+  font-size: 11px;
   font-weight: 600;
   letter-spacing: 0.12em;
   text-transform: uppercase;
   color: var(--green-neon);
   margin-bottom: 16px;
+  padding: 5px 14px;
+  border: 1px solid rgba(0, 230, 118, 0.35);
+  border-radius: 999px;
+  background: rgba(0, 230, 118, 0.05);
 }
 
-.section-label::before {
-  content: '';
-  display: block;
-  width: 20px;
-  height: 2px;
-  background: var(--green-neon);
-  border-radius: 1px;
-}
 
 /* ─────────────── Accent text ─────────────── */
 .neon { color: var(--green-neon); }
@@ -317,7 +313,12 @@ h1, h2, h3, h4 {
 /* ─────────────── Nav responsive ─────────────── */
 @media (max-width: 768px) {
   .nav-links-desktop { display: none !important; }
-  .hamburger-btn { display: block !important; }
+  .hamburger-btn { display: flex !important; }
+  .nav-cta-desktop { display: none !important; }
+  .nav-logo { height: 30px !important; }
+  .nav-wrapper { width: 100% !important; }
+  .avatar-circle { width: 32px !important; height: 32px !important; font-size: 10px !important; margin-left: -8px !important; }
+  .avatar-circle:first-child { margin-left: 0 !important; }
 }
 
 /* ─────────────── Services panel ─────────────── */
@@ -355,4 +356,30 @@ h1, h2, h3, h4 {
   .solutions-grid > div { order: unset !important; }
   .process-grid { grid-template-columns: 1fr !important; }
   .process-img { display: none !important; }
+}
+
+/* ─────────────── Hero graphic mobile ─────────────── */
+@media (max-width: 768px) {
+  .hero-graphic-container { height: auto !important; }
+  .hero-card-grid { gap: 8px !important; padding: 0 !important; }
+  .hero-card { padding: 11px 12px !important; }
+  .hero-metric { font-size: 18px !important; }
+  .hero-card-label { font-size: 10px !important; }
+  .hero-chart { height: 24px !important; margin-top: 6px !important; }
+  .hero-bars { margin-top: 4px !important; }
+  .hero-icon { width: 32px !important; height: 32px !important; font-size: 14px !important; }
+}
+
+/* ─────────────── CTA + price row mobile (Solutions & ServiceSection) ─────────────── */
+@media (max-width: 768px) {
+  .cta-price-row { flex-wrap: nowrap !important; gap: 10px !important; }
+  .cta-price-row .btn-green { font-size: 12px !important; padding: 9px 13px !important; flex-shrink: 0; }
+  .cta-price-big { font-size: 22px !important; }
+  .cta-price-from { font-size: 10px !important; }
+}
+
+/* ─────────────── Services tab bar — 2 per row on mobile ─────────────── */
+@media (max-width: 600px) {
+  .services-tab-bar { gap: 6px !important; }
+  .services-tab-btn { flex: 0 0 calc(50% - 3px) !important; justify-content: center !important; }
 }

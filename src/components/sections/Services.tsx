@@ -38,6 +38,22 @@ const categories: Category[] = [
     ],
   },
   {
+    icon: '◆', iconColor: '#f6c90e', glowColor: 'rgba(246,201,14,0.10)',
+    title: 'Branding & Photo Editing', shortTitle: 'Branding',
+    services: [
+      { name: 'Visual Identity Design', desc: 'Unique logos, colour palettes and typography that define your brand personality.' },
+      { name: 'High-End Photo Retouching', desc: 'Professional image editing, colour correction and background removal.' },
+      { name: 'Brand Guidelines', desc: 'Comprehensive style guides ensuring visual consistency across all media.' },
+      { name: 'Creative Manipulation', desc: 'Combining photography and graphic elements to produce striking marketing visuals.' },
+    ],
+    tech: [
+      { name: 'Figma', color: '#f24e1e' }, { name: 'Photoshop', color: '#31a8ff' },
+      { name: 'Illustrator', color: '#ff9a00' }, { name: 'Lightroom', color: '#31a8ff' },
+      { name: 'InDesign', color: '#ff3366' }, { name: 'Blender', color: '#ea7600' },
+      { name: 'Spline', color: '#1cf5d3' },
+    ],
+  },
+  {
     icon: '▲', iconColor: '#f6c90e', glowColor: 'rgba(246,201,14,0.10)',
     title: 'Digital Marketing', shortTitle: 'Digital Marketing',
     services: [
@@ -68,22 +84,6 @@ const categories: Category[] = [
       { name: 'DaVinci', color: '#ffcc00' }, { name: 'CapCut', color: '#00c4cc' },
       { name: 'Canva', color: '#00c4cc' }, { name: 'Midjourney', color: '#ffffff' },
       { name: 'ChatGPT', color: '#74aa9c' }, { name: 'Descript', color: '#7c5cfc' },
-    ],
-  },
-  {
-    icon: '◆', iconColor: '#f6c90e', glowColor: 'rgba(246,201,14,0.10)',
-    title: 'Branding & Photo Editing', shortTitle: 'Branding',
-    services: [
-      { name: 'Visual Identity Design', desc: 'Unique logos, colour palettes and typography that define your brand personality.' },
-      { name: 'High-End Photo Retouching', desc: 'Professional image editing, colour correction and background removal.' },
-      { name: 'Brand Guidelines', desc: 'Comprehensive style guides ensuring visual consistency across all media.' },
-      { name: 'Creative Manipulation', desc: 'Combining photography and graphic elements to produce striking marketing visuals.' },
-    ],
-    tech: [
-      { name: 'Figma', color: '#f24e1e' }, { name: 'Photoshop', color: '#31a8ff' },
-      { name: 'Illustrator', color: '#ff9a00' }, { name: 'Lightroom', color: '#31a8ff' },
-      { name: 'InDesign', color: '#ff3366' }, { name: 'Blender', color: '#ea7600' },
-      { name: 'Spline', color: '#1cf5d3' },
     ],
   },
 ];
@@ -118,17 +118,18 @@ export default function Services() {
         </div>
 
         {/* Tab bar */}
-        <div style={{ display: 'flex', gap: 8, marginBottom: 44, overflowX: 'auto', paddingBottom: 4, justifyContent: 'center', flexWrap: 'wrap' }}>
+        <div className="services-tab-bar" style={{ display: 'flex', gap: 8, marginBottom: 44, paddingBottom: 4, justifyContent: 'center', flexWrap: 'wrap' }}>
           {categories.map((c, i) => (
             <button
               key={i}
+              className="services-tab-btn"
               onClick={() => setActiveTab(i)}
               style={{
                 padding: '10px 22px', borderRadius: 40, cursor: 'pointer',
                 fontFamily: "'Syne', sans-serif", fontWeight: 700, fontSize: 13,
                 transition: 'all 0.25s ease',
                 background: activeTab === i
-                  ? (i === 0 || i === 2 ? 'rgba(0,230,118,0.15)' : 'rgba(246,201,14,0.12)')
+                  ? (c.iconColor === '#00e676' ? 'rgba(0,230,118,0.15)' : 'rgba(246,201,14,0.12)')
                   : 'rgba(255,255,255,0.04)',
                 color: activeTab === i ? c.iconColor : '#a0aec0',
                 border: `1px solid ${activeTab === i ? c.iconColor + '55' : 'rgba(255,255,255,0.08)'}`,

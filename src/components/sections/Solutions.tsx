@@ -1,6 +1,6 @@
 'use client';
 
-import { useRef } from 'react';
+import { useRef, type ReactNode } from 'react';
 import { motion, useInView } from 'framer-motion';
 
 interface SolutionCard {
@@ -52,7 +52,7 @@ const agencyCards: SolutionCard[] = [
 
 interface SubSectionProps {
   label: string;
-  title: string;
+  title: ReactNode;
   desc: string;
   cards: SolutionCard[];
   flip?: boolean;
@@ -66,7 +66,7 @@ function SubSection({ label, title, desc, cards, flip, gradTint, priceTag, price
   const inView = useInView(ref, { once: true, margin: '-60px' });
 
   return (
-    <div style={{ background: gradTint || 'transparent', borderRadius: 24, padding: '70px 0', marginBottom: 2 }} ref={ref}>
+    <div style={{ background: gradTint || 'transparent', borderRadius: 24, padding: '70px 0', marginBottom: 2, overflow: 'hidden' }} ref={ref}>
       <div className="container">
         <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 70, alignItems: 'center' }} className="solutions-grid">
           {/* Text side */}
@@ -116,12 +116,15 @@ function SubSection({ label, title, desc, cards, flip, gradTint, priceTag, price
               ))}
             </div>
 
-            <div style={{ display: 'flex', alignItems: 'center', gap: 20, flexWrap: 'wrap' }}>
-              <div>
-                <span style={{ fontSize: 12, color: 'var(--muted)', fontFamily: 'Space Grotesk, sans-serif', display: 'block', marginBottom: 2 }}>
+            <div className="cta-price-row" style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', flexWrap: 'wrap', gap: 16 }}>
+              <a href="#contact" className="btn-green" style={{ fontSize: 14, padding: '12px 22px' }}>
+                Book a Free Call <em className="arrow">↗</em>
+              </a>
+              <div style={{ textAlign: 'right' }}>
+                <span className="cta-price-from" style={{ fontSize: 12, color: 'var(--muted)', fontFamily: 'Space Grotesk, sans-serif', display: 'block', marginBottom: 2 }}>
                   Starts from
                 </span>
-                <span style={{ fontSize: 30, fontWeight: 800, fontFamily: "'Syne', sans-serif", color: 'var(--green-neon)' }}>
+                <span className="cta-price-big" style={{ fontSize: 30, fontWeight: 800, fontFamily: "'Syne', sans-serif", color: 'var(--green-neon)' }}>
                   {priceTag}
                 </span>
                 {priceLabel && (
@@ -130,9 +133,6 @@ function SubSection({ label, title, desc, cards, flip, gradTint, priceTag, price
                   </span>
                 )}
               </div>
-              <a href="#contact" className="btn-green" style={{ fontSize: 14, padding: '12px 22px' }}>
-                Book a Free Call <em className="arrow">↗</em>
-              </a>
             </div>
           </motion.div>
 
@@ -183,7 +183,7 @@ export default function Solutions() {
 
       <SubSection
         label="Agency Fulfillment"
-        title="Agency Fulfillment at Scale"
+        title={<>Agency Fulfillment<br />at Scale</>}
         desc="Partner with us as your dedicated creative and marketing team. We execute the work while you focus on growing your business."
         cards={agencyCards}
         flip={true}

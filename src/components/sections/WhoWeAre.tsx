@@ -15,7 +15,7 @@ export default function WhoWeAre() {
   const inView = useInView(ref, { once: true, margin: '-80px' });
 
   return (
-    <section id="about" className="section" style={{ background: 'var(--bg)' }} ref={ref}>
+    <section id="about" className="section" style={{ background: 'var(--bg)', overflow: 'hidden' }} ref={ref}>
       <div className="container">
         <div
           style={{
