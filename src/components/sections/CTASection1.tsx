@@ -74,7 +74,7 @@ export default function CTASection1() {
                 </div>
               ))}
             </div>
-            <a href="#contact" className="btn-green" style={{ fontSize: 15, padding: '14px 28px' }}>
+            <a href="/contact" className="btn-green" style={{ fontSize: 15, padding: '14px 28px' }}>
               Start a Project <em className="arrow">↗</em>
             </a>
           </motion.div>

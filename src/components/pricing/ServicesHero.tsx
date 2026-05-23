@@ -16,8 +16,8 @@ export default function ServicesHero() {
         position: 'relative',
         background: 'var(--bg)',
         overflow: 'hidden',
-        paddingTop: 160,
-        paddingBottom: 100,
+        paddingTop: 120,
+        paddingBottom: 60,
         textAlign: 'center',
       }}
       className="svc-hero"
@@ -63,7 +63,7 @@ export default function ServicesHero() {
         >
           <h1
             style={{
-              fontSize: 'clamp(2.8rem, 6vw, 5.5rem)',
+              fontSize: 'clamp(2.5rem, 5vw, 4rem)',
               fontWeight: 800,
               lineHeight: 1.08,
               marginBottom: 24,
@@ -96,7 +96,7 @@ export default function ServicesHero() {
           </p>
 
           {/* Service pills — clickable, scroll to section */}
-          <div style={{ display: 'flex', gap: 10, justifyContent: 'center', flexWrap: 'wrap', marginBottom: 48 }}>
+          <div style={{ display: 'flex', gap: 10, justifyContent: 'center', flexWrap: 'wrap' }}>
             {pills.map((p, i) => (
               <motion.a
                 key={p.label}
@@ -128,56 +128,12 @@ export default function ServicesHero() {
               </motion.a>
             ))}
           </div>
-
-          <motion.a
-            href="#contact"
-            className="btn-green"
-            style={{ fontSize: 15, padding: '14px 32px' }}
-            initial={{ opacity: 0, y: 12 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.5, delay: 0.65 }}
-          >
-            Book a Free Strategy Call <em className="arrow">↗</em>
-          </motion.a>
-        </motion.div>
-
-        {/* Scroll cue — fades in then floats */}
-        <motion.div
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          transition={{ duration: 1, delay: 1 }}
-          style={{ marginTop: 64, display: 'flex', justifyContent: 'center' }}
-        >
-          <motion.div
-            animate={{ y: [0, 10, 0] }}
-            transition={{ duration: 2, repeat: Infinity, ease: 'easeInOut', delay: 1.5 }}
-            style={{
-              display: 'flex',
-              flexDirection: 'column',
-              alignItems: 'center',
-              gap: 8,
-              color: 'var(--muted)',
-              fontSize: 11,
-              letterSpacing: '0.1em',
-              textTransform: 'uppercase',
-              fontFamily: "'Space Grotesk', sans-serif",
-            }}
-          >
-            <div
-              style={{
-                width: 1,
-                height: 48,
-                background: 'linear-gradient(to bottom, transparent, rgba(0,230,118,0.5))',
-              }}
-            />
-            Scroll to explore
-          </motion.div>
         </motion.div>
       </div>
 
       <style>{`
         @media (max-width: 768px) {
-          .svc-hero { padding-top: 110px !important; padding-bottom: 70px !important; }
+          .svc-hero { padding-top: 100px !important; padding-bottom: 50px !important; }
         }
       `}</style>
     </section>

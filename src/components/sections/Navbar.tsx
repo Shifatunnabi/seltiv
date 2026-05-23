@@ -7,9 +7,9 @@ import { usePathname } from 'next/navigation';
 
 const navLinks = [
   { label: 'Home', href: '/' },
-  { label: 'Services', href: '/services' },
-  { label: 'Portfolio', href: '/#portfolio' },
-  { label: 'Pricing', href: '/#pricing' },
+  { label: 'Pricing', href: '/pricing' },
+  { label: 'Portfolio', href: '/portfolio' },
+  { label: 'Contact', href: '/contact' },
 ];
 
 const menuVariants = {
@@ -111,7 +111,7 @@ export default function Navbar() {
             ))}
           </ul>
 
-          <a href="#contact" className="btn-green nav-cta-desktop" style={{ fontSize: 13, padding: '9px 18px' }}>
+          <a href="/contact" className="btn-green nav-cta-desktop" style={{ fontSize: 13, padding: '9px 18px' }}>
             Book a Call <em className="arrow">↗</em>
           </a>
 
@@ -205,7 +205,7 @@ export default function Navbar() {
               ))}
               <motion.a
                 variants={itemVariants}
-                href="#contact"
+                href="/contact"
                 className="btn-green"
                 onClick={() => setMenuOpen(false)}
                 style={{ marginTop: 16, textAlign: 'center', justifyContent: 'center' }}

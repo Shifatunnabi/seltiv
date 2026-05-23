@@ -3,13 +3,21 @@
 import { useState } from 'react';
 import SeltivLogo from '@/components/ui/SeltivLogo';
 
-const quickLinks = ['Home', 'Services', 'Portfolio', 'Pricing', 'About'];
+const quickLinks = [
+  { label: 'Home', href: '/' },
+  { label: 'Pricing', href: '/pricing' },
+  { label: 'Portfolio', href: '/portfolio' },
+  { label: 'Contact', href: '/contact' },
+  { label: 'About', href: '/#whoweare' },
+];
+
 const socialIcons = [
   { label: 'X', href: '#' },
   { label: 'in', href: '#' },
   { label: 'ig', href: '#' },
   { label: 'yt', href: '#' },
 ];
+
 const contactItems = [
   { icon: '✉', val: 'hello@seltiv.com' },
   { icon: '☎', val: '+1 (555) 000-0000' },
@@ -114,7 +122,7 @@ export default function Footer() {
             </div>
             <ul style={{ listStyle: 'none', display: 'flex', flexDirection: 'column', gap: 12 }}>
               {quickLinks.map((l) => (
-                <FooterLink key={l} label={l} href={`#${l.toLowerCase()}`} />
+                <FooterLink key={l.label} label={l.label} href={l.href} />
               ))}
             </ul>
           </div>

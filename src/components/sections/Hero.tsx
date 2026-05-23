@@ -91,11 +91,11 @@ export default function Hero() {
           </p>
 
           <div style={{ display: 'flex', gap: 14, flexWrap: 'wrap' }}>
-            <a href="#contact" className="btn-green" style={{ fontSize: 15, padding: '14px 30px' }}>
+            <a href="/contact" className="btn-green" style={{ fontSize: 15, padding: '14px 30px' }}>
               Book a Call <em className="arrow">↗</em>
             </a>
             <a
-              href="#portfolio"
+              href="/portfolio"
               className="btn-ghost"
               style={{ fontSize: 15, padding: '14px 30px', border: '2.5px solid rgba(255,255,255,0.38)' }}
             >

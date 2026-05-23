@@ -19,12 +19,12 @@ export default function BrandingSection() {
     <ServiceSection
       id="branding"
       index={2}
-      label="Branding & Photo Editing"
+      label="Brand Identity & Graphic Design"
       headline={
         <>
-          A Brand Identity That<br />
-          <span style={{ color: '#f6c90e', textShadow: '0 0 40px rgba(246,201,14,0.3)' }}>
-            Stands Apart
+          A Brand Identity That  
+          <span style={{ color: '#f6c90e', textShadow: '0 0 40px rgba(246,201,14,0.3)', marginLeft: 8}}>
+             Stands Apart
           </span>
         </>
       }

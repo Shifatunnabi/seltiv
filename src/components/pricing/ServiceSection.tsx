@@ -93,31 +93,29 @@ export default function ServiceSection({
           transition={{ duration: 0.7, ease: 'easeOut' }}
           style={{ marginBottom: 56 }}
         >
-          <div className="section-label" style={{ marginBottom: 18 }}>{label}</div>
-          <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 40, alignItems: 'flex-end' }} className="svc-header-grid">
-            <h2
-              style={{
-                fontSize: 'clamp(2rem, 3.5vw, 3.2rem)',
-                fontWeight: 800,
-                lineHeight: 1.1,
-                margin: 0,
-              }}
-            >
-              {headline}
-            </h2>
-            <p
-              style={{
-                color: 'var(--muted)',
-                fontSize: 16,
-                lineHeight: 1.8,
-                margin: 0,
-                fontWeight: 300,
-                paddingBottom: 4,
-              }}
-            >
-              {description}
-            </p>
-          </div>
+          <div className="section-label" style={{ marginBottom: 20 }}>{label}</div>
+          <h2
+            style={{
+              fontSize: 'clamp(2.2rem, 4vw, 3.5rem)',
+              fontWeight: 800,
+              lineHeight: 1.1,
+              marginBottom: 20,
+              maxWidth: 800,
+            }}
+          >
+            {headline}
+          </h2>
+          <p
+            style={{
+              color: 'var(--muted)',
+              fontSize: 17,
+              lineHeight: 1.8,
+              maxWidth: 650,
+              fontWeight: 300,
+            }}
+          >
+            {description}
+          </p>
         </motion.div>
 
         {/* Main panel */}
@@ -239,7 +237,7 @@ export default function ServiceSection({
             borderTop: `1px solid ${iconColor}12`,
           }}
         >
-          <a href="#contact" className="btn-green" style={{ fontSize: 15, padding: '14px 30px' }}>
+          <a href="/contact" className="btn-green" style={{ fontSize: 15, padding: '14px 30px' }}>
             Book a Free Call <em className="arrow">↗</em>
           </a>
           <div style={{ textAlign: 'right' }}>
@@ -257,12 +255,6 @@ export default function ServiceSection({
           </div>
         </motion.div>
       </div>
-
-      <style>{`
-        @media (max-width: 768px) {
-          .svc-header-grid { grid-template-columns: 1fr !important; gap: 16px !important; }
-        }
-      `}</style>
     </section>
   );
 }

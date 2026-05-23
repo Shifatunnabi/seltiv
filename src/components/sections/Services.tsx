@@ -39,7 +39,7 @@ const categories: Category[] = [
   },
   {
     icon: '◆', iconColor: '#f6c90e', glowColor: 'rgba(246,201,14,0.10)',
-    title: 'Branding & Photo Editing', shortTitle: 'Branding',
+    title: 'Brand Identity & Graphic Design', shortTitle: 'Branding',
     services: [
       { name: 'Visual Identity Design', desc: 'Unique logos, colour palettes and typography that define your brand personality.' },
       { name: 'High-End Photo Retouching', desc: 'Professional image editing, colour correction and background removal.' },
@@ -246,7 +246,7 @@ export default function Services() {
           <p style={{ color: 'var(--muted)', fontSize: 15, marginBottom: 20, fontFamily: 'Space Grotesk, sans-serif' }}>
             Not sure which service fits your needs?
           </p>
-          <a href="#contact" className="btn-green" style={{ fontSize: 15, padding: '14px 32px' }}>
+          <a href="/contact" className="btn-green" style={{ fontSize: 15, padding: '14px 32px' }}>
             Discuss Your Project Over a Free Call <em className="arrow">↗</em>
           </a>
         </div>
