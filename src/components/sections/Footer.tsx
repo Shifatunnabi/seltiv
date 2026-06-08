@@ -2,33 +2,29 @@
 
 import { useState } from 'react';
 import SeltivLogo from '@/components/ui/SeltivLogo';
+import { FaFacebookF, FaInstagram, FaLinkedinIn } from 'react-icons/fa';
+import Image from 'next/image';
 
 const quickLinks = [
   { label: 'Home', href: '/' },
   { label: 'Pricing', href: '/pricing' },
   { label: 'Portfolio', href: '/portfolio' },
   { label: 'Contact', href: '/contact' },
-  { label: 'About', href: '/#whoweare' },
 ];
 
 const socialIcons = [
-  { label: 'X', href: '#' },
-  { label: 'in', href: '#' },
-  { label: 'ig', href: '#' },
-  { label: 'yt', href: '#' },
+  { label: 'FB', href: 'https://facebook.com', icon: <FaFacebookF /> },
+  { label: 'IG', href: 'https://instagram.com', icon: <FaInstagram /> },
+  { label: 'LN', href: 'https://linkedin.com', icon: <FaLinkedinIn /> },
 ];
 
-const contactItems = [
-  { icon: '✉', val: 'hello@seltiv.com' },
-  { icon: '☎', val: '+1 (555) 000-0000' },
-  { icon: '◎', val: 'Remote-first. Worldwide.' },
-];
-
-function SocialIcon({ label, href }: { label: string; href: string }) {
+function SocialIcon({ icon, href }: { icon: React.ReactNode; href: string }) {
   const [hovered, setHovered] = useState(false);
   return (
     <a
       href={href}
+      target="_blank"
+      rel="noopener noreferrer"
       onMouseEnter={() => setHovered(true)}
       onMouseLeave={() => setHovered(false)}
       style={{
@@ -37,12 +33,11 @@ function SocialIcon({ label, href }: { label: string; href: string }) {
         border: `1px solid ${hovered ? 'var(--green-neon)' : 'rgba(0,230,118,0.12)'}`,
         display: 'flex', alignItems: 'center', justifyContent: 'center',
         color: hovered ? 'var(--green-neon)' : 'var(--muted)',
-        fontSize: 12, fontWeight: 700,
-        fontFamily: "'Syne', sans-serif", textDecoration: 'none',
+        fontSize: 16,
         transition: 'all 0.2s ease',
       }}
     >
-      {label}
+      {icon}
     </a>
   );
 }
@@ -69,6 +64,9 @@ function FooterLink({ label, href }: { label: string; href: string }) {
 }
 
 export default function Footer() {
+  const [emailHover, setEmailHover] = useState(false);
+  const [phoneHover, setPhoneHover] = useState(false);
+
   return (
     <footer
       style={{
@@ -78,19 +76,23 @@ export default function Footer() {
         overflow: 'hidden',
       }}
     >
-      {/* Watermark */}
+      {/* Background Logo */}
       <div
         style={{
-          position: 'absolute', bottom: -20, left: '50%', transform: 'translateX(-50%)',
-          fontFamily: "'Syne', sans-serif", fontWeight: 900,
-          fontSize: 'clamp(80px, 15vw, 160px)',
-          color: 'transparent', WebkitTextStroke: '1px rgba(14,107,63,0.08)',
-          whiteSpace: 'nowrap', letterSpacing: '0.1em',
+          position: 'absolute', bottom: -50, left: '50%', transform: 'translateX(-50%)',
+          width: '80%',
+          maxWidth: 800,
+          aspectRatio: '3 / 1',
+          opacity: 0.05,
           pointerEvents: 'none', userSelect: 'none',
-          lineHeight: 1,
         }}
       >
-        SELTIV
+        <Image 
+          src="/logo.png" 
+          alt="Seltiv Watermark" 
+          fill 
+          style={{ objectFit: 'contain', filter: 'grayscale(1) brightness(2)' }} 
+        />
       </div>
 
       <div className="container" style={{ position: 'relative', zIndex: 1, padding: '70px 0 30px' }}>
@@ -100,9 +102,10 @@ export default function Footer() {
           className="footer-grid"
         >
           {/* Col 1: Brand */}
-          <div>
+          <div className="footer-brand">
             <div style={{ marginBottom: 16 }}>
-              <SeltivLogo size={28} />
+              {/* <SeltivLogo size={28} /> */}
+              <Image src="/icon.png" alt="Seltiv Logo" height={60} width={60} />
             </div>
             <p style={{ color: 'var(--muted)', fontSize: 14, lineHeight: 1.8, maxWidth: 280, marginBottom: 24 }}>
               Think Growth. Think Seltiv.<br />
@@ -110,13 +113,13 @@ export default function Footer() {
             </p>
             <div style={{ display: 'flex', gap: 10 }}>
               {socialIcons.map((s) => (
-                <SocialIcon key={s.label} label={s.label} href={s.href} />
+                <SocialIcon key={s.label} icon={s.icon} href={s.href} />
               ))}
             </div>
           </div>
 
           {/* Col 2: Quick Links */}
-          <div>
+          <div className="footer-links">
             <div style={{ fontFamily: "'Syne', sans-serif", fontWeight: 700, fontSize: 15, marginBottom: 20, color: '#fff' }}>
               Quick Links
             </div>
@@ -128,17 +131,67 @@ export default function Footer() {
           </div>
 
           {/* Col 3: Contact */}
-          <div>
+          <div className="footer-contact">
             <div style={{ fontFamily: "'Syne', sans-serif", fontWeight: 700, fontSize: 15, marginBottom: 20 }}>
               Get in Touch
             </div>
             <div style={{ display: 'flex', flexDirection: 'column', gap: 14 }}>
-              {contactItems.map((c) => (
-                <div key={c.val} style={{ display: 'flex', alignItems: 'center', gap: 12 }}>
-                  <span style={{ color: 'var(--green-neon)', fontSize: 14, flexShrink: 0 }}>{c.icon}</span>
-                  <span style={{ color: 'var(--muted)', fontSize: 14, fontFamily: 'Space Grotesk, sans-serif' }}>{c.val}</span>
+              <div style={{ display: 'flex', alignItems: 'center', gap: 12 }}>
+                <span style={{ color: 'var(--green-neon)', fontSize: 14, flexShrink: 0 }}>✉</span>
+                <a 
+                  href="mailto:hello@seltiv.com" 
+                  onMouseEnter={() => setEmailHover(true)}
+                  onMouseLeave={() => setEmailHover(false)}
+                  style={{ 
+                    color: emailHover ? 'var(--green-neon)' : 'var(--muted)', 
+                    fontSize: 14, 
+                    fontFamily: 'Space Grotesk, sans-serif', 
+                    textDecoration: 'none',
+                    transition: 'color 0.2s ease'
+                  }}
+                >
+                  hello@seltiv.com
+                </a>
+              </div>
+              <div style={{ display: 'flex', alignItems: 'flex-start', gap: 12 }}>
+                <span style={{ color: 'var(--green-neon)', fontSize: 14, flexShrink: 0, marginTop: 2 }}>☎</span>
+                <div 
+                  style={{ display: 'flex', flexDirection: 'column', gap: 6 }}
+                  onMouseEnter={() => setPhoneHover(true)}
+                  onMouseLeave={() => setPhoneHover(false)}
+                >
+                  <a 
+                    href="tel:+8801706642396" 
+                    style={{ 
+                      color: phoneHover ? 'var(--green-neon)' : 'var(--muted)', 
+                      fontSize: 14, 
+                      fontFamily: 'Space Grotesk, sans-serif', 
+                      textDecoration: 'none',
+                      transition: 'color 0.2s ease'
+                    }}
+                  >
+                    +880 1706 642396
+                  </a>
+                  <a 
+                    href="tel:+8801885890605" 
+                    style={{ 
+                      color: phoneHover ? 'var(--green-neon)' : 'var(--muted)', 
+                      fontSize: 14, 
+                      fontFamily: 'Space Grotesk, sans-serif', 
+                      textDecoration: 'none',
+                      transition: 'color 0.2s ease'
+                    }}
+                  >
+                    +880 1885 890605
+                  </a>
                 </div>
-              ))}
+              </div>
+              <div style={{ display: 'flex', alignItems: 'center', gap: 12 }}>
+                <span style={{ color: 'var(--green-neon)', fontSize: 14, flexShrink: 0 }}>◎</span>
+                <span style={{ color: 'var(--muted)', fontSize: 14, fontFamily: 'Space Grotesk, sans-serif' }}>
+                  Remote-first. Worldwide.
+                </span>
+              </div>
             </div>
           </div>
         </div>
@@ -148,22 +201,30 @@ export default function Footer() {
           style={{
             borderTop: '1px solid rgba(255,255,255,0.06)',
             paddingTop: 24,
-            display: 'flex', justifyContent: 'space-between', alignItems: 'center',
+            display: 'flex', justifyContent: 'center', alignItems: 'center',
             flexWrap: 'wrap', gap: 12,
           }}
         >
           <span style={{ color: 'rgba(160,174,192,0.5)', fontSize: 13, fontFamily: 'Space Grotesk, sans-serif' }}>
-            © {new Date().getFullYear()} Seltiv. All rights reserved.
-          </span>
-          <span style={{ color: 'rgba(160,174,192,0.5)', fontSize: 13, fontFamily: 'Space Grotesk, sans-serif' }}>
-            Built with ◈ by Seltiv
+            © 2026 Seltiv. All rights reserved.
           </span>
         </div>
       </div>
 
       <style>{`
         @media (max-width: 768px) {
-          .footer-grid { grid-template-columns: 1fr !important; gap: 40px !important; }
+          .footer-grid { 
+            grid-template-columns: 1fr !important; 
+            gap: 40px !important; 
+          }
+          .footer-links, .footer-contact {
+            display: inline-block;
+            width: 45%;
+            vertical-align: top;
+          }
+          .footer-brand {
+            margin-bottom: 20px;
+          }
         }
       `}</style>
     </footer>

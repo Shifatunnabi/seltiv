@@ -2,6 +2,7 @@
 
 import { useRef, type ReactNode } from 'react';
 import { motion, useInView } from 'framer-motion';
+import Image from 'next/image';
 
 interface SubService {
   icon: string;
@@ -20,6 +21,7 @@ interface SolutionMainCardProps {
   priceLabel?: string;
   imageAlt: string;
   imagePlaceholderText: string;
+  imageSrc?: string;
 }
 
 const softwareSubServices: SubService[] = [
@@ -69,7 +71,7 @@ const agencySubServices: SubService[] = [
   },
 ];
 
-function SolutionMainCard({ label, title, desc, subServices, priceTag, priceLabel, imageAlt, imagePlaceholderText }: SolutionMainCardProps) {
+function SolutionMainCard({ label, title, desc, subServices, priceTag, priceLabel, imageAlt, imagePlaceholderText, imageSrc }: SolutionMainCardProps) {
   const ref = useRef(null);
   const inView = useInView(ref, { once: true, margin: '-60px' });
 
@@ -90,20 +92,41 @@ function SolutionMainCard({ label, title, desc, subServices, priceTag, priceLabe
     >
       {/* 1. Photo at top (3:1 Aspect Ratio) */}
       <div
-        className="img-placeholder"
         style={{
           width: '100%',
           aspectRatio: '3 / 1',
           height: 'auto',
           borderRadius: 16,
           marginBottom: 32,
-          fontSize: 14,
+          overflow: 'hidden',
+          position: 'relative',
+          background: 'rgba(255, 255, 255, 0.03)',
         }}
       >
-        <div style={{ opacity: 0.5, textAlign: 'center' }}>
-          <div style={{ fontSize: 32, marginBottom: 8 }}>🖼️</div>
-          {imagePlaceholderText}
-        </div>
+        {imageSrc ? (
+          <Image
+            src={imageSrc}
+            alt={imageAlt}
+            fill
+            style={{ objectFit: 'cover' }}
+            sizes="(max-width: 1200px) 100vw, 1200px"
+          />
+        ) : (
+          <div style={{
+            width: '100%',
+            height: '100%',
+            display: 'flex',
+            flexDirection: 'column',
+            alignItems: 'center',
+            justifyContent: 'center',
+            fontSize: 14,
+          }}>
+            <div style={{ opacity: 0.5, textAlign: 'center' }}>
+              <div style={{ fontSize: 32, marginBottom: 8 }}>🖼️</div>
+              {imagePlaceholderText}
+            </div>
+          </div>
+        )}
       </div>
 
       {/* 2. Service Name (Section Label + Title) */}
@@ -225,6 +248,7 @@ export default function Solutions() {
           priceTag="$399"
           imageAlt="Software Development Showcase"
           imagePlaceholderText="Software Development & SaaS Platforms"
+          imageSrc="/solutions/software.png"
         />
 
         <SolutionMainCard
@@ -236,6 +260,7 @@ export default function Solutions() {
           priceLabel="/mo"
           imageAlt="Agency Fulfillment Showcase"
           imagePlaceholderText="Content, Branding & Marketing Fulfillment"
+          imageSrc="/solutions/agency.png"
         />
       </div>
     </section>

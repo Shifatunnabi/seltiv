@@ -3,12 +3,8 @@
 import { motion } from 'framer-motion';
 import { useInView } from 'framer-motion';
 import { useRef } from 'react';
-
-const stats = [
-  { n: '50+', label: 'Projects Delivered', icon: '◈' },
-  { n: '30+', label: 'Happy Clients', icon: '◉' },
-  { n: '3+', label: 'Years of Excellence', icon: '◆' },
-];
+import CountUp from 'react-countup';
+import statsData from '@/data/stats.json';
 
 export default function WhoWeAre() {
   const ref = useRef(null);
@@ -26,7 +22,7 @@ export default function WhoWeAre() {
           }}
           className="who-grid"
         >
-          {/* Left */}
+          {/* Left: Heading */}
           <motion.div
             initial={{ opacity: 0, x: -40 }}
             animate={inView ? { opacity: 1, x: 0 } : {}}
@@ -39,7 +35,7 @@ export default function WhoWeAre() {
             </h2>
           </motion.div>
 
-          {/* Right */}
+          {/* Right: Content & Stats */}
           <motion.div
             initial={{ opacity: 0, x: 40 }}
             animate={inView ? { opacity: 1, x: 0 } : {}}
@@ -51,9 +47,9 @@ export default function WhoWeAre() {
               people love and brands people trust.
             </p>
             <div style={{ display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: 16 }}>
-              {stats.map((s, i) => (
+              {statsData.stats.map((s, i) => (
                 <motion.div
-                  key={s.n}
+                  key={s.label}
                   className="glass"
                   style={{ padding: '22px 18px', textAlign: 'center' }}
                   initial={{ opacity: 0, y: 20 }}
@@ -70,7 +66,11 @@ export default function WhoWeAre() {
                       animation: 'counter-glow 3s ease-in-out infinite',
                     }}
                   >
-                    {s.n}
+                    {inView ? (
+                      <CountUp end={s.value} duration={2.5} suffix={s.suffix} />
+                    ) : (
+                      `0${s.suffix}`
+                    )}
                   </div>
                   <div style={{ fontSize: 12, color: 'var(--muted)', marginTop: 4, fontFamily: 'Space Grotesk, sans-serif' }}>
                     {s.label}

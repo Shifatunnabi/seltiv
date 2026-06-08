@@ -28,7 +28,7 @@ export default function Portfolio() {
               Recent <span className="neon">Projects</span>
             </h2>
           </div>
-          <a href="/portfolio" className="btn-ghost">
+          <a href="/contact" className="btn-ghost">
             View All Work <em className="arrow">→</em>
           </a>
         </div>

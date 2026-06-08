@@ -2,6 +2,7 @@
 
 import { useRef } from 'react';
 import { motion, useInView } from 'framer-motion';
+import Image from 'next/image';
 
 const steps = [
   {
@@ -23,7 +24,7 @@ const steps = [
 
 export default function Process() {
   const ref = useRef(null);
-  const inView = useInView(ref, { once: true, margin: '-80px' });
+  const inView = useInView(ref, { once: true, margin: '-60px' });
 
   return (
     <section className="section" style={{ background: 'var(--bg2)' }} ref={ref}>
@@ -75,22 +76,25 @@ export default function Process() {
 
           <motion.div
             className="img-placeholder process-img"
-            style={{ height: 360, fontSize: 11 }}
+            style={{ 
+              height: 420, 
+              background: 'transparent', 
+              border: 'none',
+              position: 'relative',
+              overflow: 'hidden',
+              borderRadius: 24
+            }}
             initial={{ opacity: 0, scale: 0.95 }}
             animate={inView ? { opacity: 1, scale: 1 } : {}}
             transition={{ duration: 0.7, delay: 0.3 }}
           >
-            <svg width="60" height="60" viewBox="0 0 60 60" fill="none">
-              <circle cx="30" cy="30" r="24" stroke="rgba(0,230,118,0.3)" strokeWidth="1.5" />
-              <circle cx="30" cy="30" r="14" stroke="rgba(0,230,118,0.2)" strokeWidth="1" />
-              <circle cx="30" cy="30" r="6" fill="rgba(0,230,118,0.3)" />
-              <line x1="30" y1="6" x2="30" y2="14" stroke="rgba(0,230,118,0.4)" strokeWidth="1.5" />
-              <line x1="54" y1="30" x2="46" y2="30" stroke="rgba(0,230,118,0.4)" strokeWidth="1.5" />
-              <line x1="30" y1="54" x2="30" y2="46" stroke="rgba(0,230,118,0.4)" strokeWidth="1.5" />
-              <line x1="6" y1="30" x2="14" y2="30" stroke="rgba(0,230,118,0.4)" strokeWidth="1.5" />
-            </svg>
-            <span style={{ marginTop: 12 }}>Process Illustration</span>
-            <span style={{ color: 'rgba(0,230,118,0.3)', fontSize: 10 }}>drop isometric art here</span>
+            <Image
+              src="/misc/process.png"
+              alt="Our Process"
+              fill
+              style={{ objectFit: 'cover' }}
+              sizes="(max-width: 1024px) 100vw, 600px"
+            />
           </motion.div>
         </div>
       </div>

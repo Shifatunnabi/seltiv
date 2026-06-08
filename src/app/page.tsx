@@ -19,8 +19,8 @@ export default function Home() {
         <Hero />
         <MarqueeSection />
         <WhoWeAre />
-        <Solutions />
         <Services />
+        <Solutions />
         <Process />
         <Portfolio />
         <CTASection1 />

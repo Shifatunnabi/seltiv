@@ -2,12 +2,7 @@
 
 import { motion } from 'framer-motion';
 import HeroGraphic from '@/components/ui/HeroGraphic';
-
-const stats = [
-  ['50+', 'Projects'],
-  ['30+', 'Clients'],
-  ['3+', 'Years'],
-] as const;
+import statsData from '@/data/stats.json';
 
 export default function Hero() {
   return (
@@ -95,7 +90,7 @@ export default function Hero() {
               Book a Call <em className="arrow">↗</em>
             </a>
             <a
-              href="/portfolio"
+              href="/contact"
               className="btn-ghost"
               style={{ fontSize: 15, padding: '14px 30px', border: '2.5px solid rgba(255,255,255,0.38)' }}
             >
@@ -104,8 +99,8 @@ export default function Hero() {
           </div>
 
           <div className="hero-stats" style={{ marginTop: 48, display: 'flex', gap: 100 }}>
-            {stats.map(([n, l]) => (
-              <div key={l}>
+            {statsData.stats.map((s) => (
+              <div key={s.label}>
                 <div
                   style={{
                     fontSize: 28,
@@ -114,10 +109,10 @@ export default function Hero() {
                     color: 'var(--green-neon)',
                   }}
                 >
-                  {n}
+                  {s.value}{s.suffix}
                 </div>
                 <div style={{ fontSize: 13, color: 'var(--muted)', fontFamily: 'Space Grotesk, sans-serif' }}>
-                  {l}
+                  {s.label.split(' ')[0]}
                 </div>
               </div>
             ))}
