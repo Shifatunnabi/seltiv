@@ -74,7 +74,7 @@ export default function ServiceSection({
           fontFamily: "'Syne', sans-serif",
           fontWeight: 800,
           color: iconColor,
-          opacity: 0.04,
+          opacity: 0.12,
           lineHeight: 1,
           pointerEvents: 'none',
           userSelect: 'none',

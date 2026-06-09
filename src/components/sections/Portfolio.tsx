@@ -21,6 +21,7 @@ export default function Portfolio() {
             flexWrap: 'wrap',
             gap: 20,
           }}
+          className="portfolio-header"
         >
           <div>
             <div className="section-label">Our Work</div>
@@ -28,7 +29,7 @@ export default function Portfolio() {
               Recent <span className="neon">Projects</span>
             </h2>
           </div>
-          <a href="/contact" className="btn-ghost">
+          <a href="/contact" className="btn-ghost desktop-only">
             View All Work <em className="arrow">→</em>
           </a>
         </div>
@@ -41,7 +42,35 @@ export default function Portfolio() {
             <ProjectCard key={project.name} project={project} />
           ))}
         </div>
+
+        <div className="portfolio-footer" style={{ marginTop: 48, textAlign: 'center' }}>
+          <a href="/portfolio" className="btn-ghost mobile-only-btn">
+            View All Work <em className="arrow">→</em>
+          </a>
+        </div>
       </div>
+
+      <style>{`
+        .desktop-only { display: inline-flex; }
+        .mobile-only-btn { display: none; }
+        
+        @media (max-width: 768px) {
+          .desktop-only { display: none; }
+          .mobile-only-btn { 
+            display: inline-flex;
+            width: 100%;
+            max-width: 280px;
+            justify-content: center;
+          }
+          .portfolio-grid {
+            grid-template-columns: 1fr !important;
+          }
+          .portfolio-header {
+            justify-content: center !important;
+            text-align: center;
+          }
+        }
+      `}</style>
     </section>
   );
 }

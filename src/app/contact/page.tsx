@@ -1,6 +1,5 @@
 import Navbar from '@/components/sections/Navbar';
 import Footer from '@/components/sections/Footer';
-import CTASection2 from '@/components/sections/CTASection2';
 import ContactSection from '@/components/sections/ContactSection';
 
 export const metadata = {
@@ -12,7 +11,7 @@ export default function ContactPage() {
   return (
     <>
       <Navbar />
-      <main style={{ paddingTop: 120, background: 'var(--bg)' }}>
+      <main style={{ paddingTop: 80, background: 'var(--bg)' }}>
         {/* Title Section */}
         <section className="section-sm" style={{ textAlign: 'center' }}>
           <div className="container">

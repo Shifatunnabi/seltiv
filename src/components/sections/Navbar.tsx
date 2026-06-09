@@ -2,6 +2,7 @@
 
 import { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
+import Link from 'next/link';
 import Image from 'next/image';
 import { usePathname } from 'next/navigation';
 
@@ -89,7 +90,7 @@ export default function Navbar() {
             boxShadow: '0 0 18px rgba(0,230,118,0.1), 0 0 1px rgba(0,230,118,0.25)',
           }}
         >
-          <a href="/" style={{ textDecoration: 'none', flexShrink: 0 }}>
+          <Link href="/" style={{ textDecoration: 'none', flexShrink: 0 }}>
             <Image
               src="/logo.png"
               alt="Seltiv"
@@ -98,7 +99,7 @@ export default function Navbar() {
               className="nav-logo"
               style={{ height: 44, width: 'auto', display: 'block', objectFit: 'contain' }}
             />
-          </a>
+          </Link>
 
           <ul
             className="nav-links-desktop"

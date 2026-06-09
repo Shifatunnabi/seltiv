@@ -137,7 +137,6 @@ export default function Services() {
                 display: 'flex', alignItems: 'center', gap: 8,
               }}
             >
-              <span style={{ fontSize: 14 }}>{c.icon}</span>
               {c.shortTitle}
             </button>
           ))}
@@ -242,7 +241,7 @@ export default function Services() {
         </AnimatePresence>
 
         {/* CTA */}
-        <div style={{ textAlign: 'center', marginTop: 60, paddingTop: 50, borderTop: '1px solid rgba(0,230,118,0.08)' }}>
+        <div className="services-cta" style={{ textAlign: 'center', marginTop: 60, paddingTop: 50, borderTop: '1px solid rgba(0,230,118,0.08)' }}>
           <p style={{ color: 'var(--muted)', fontSize: 15, marginBottom: 20, fontFamily: 'Space Grotesk, sans-serif' }}>
             Not sure which service fits your needs?
           </p>
@@ -251,6 +250,21 @@ export default function Services() {
           </a>
         </div>
       </div>
+
+      <style>{`
+        @media (max-width: 768px) {
+          .services-panel { grid-template-columns: 1fr !important; }
+          .services-subgrid { grid-template-columns: 1fr !important; }
+          .services-cta a {
+            display: inline-block;
+            width: 100%;
+            max-width: 320px;
+            box-sizing: border-box;
+            padding: 14px 10px !important;
+            font-size: 14px !important;
+          }
+        }
+      `}</style>
     </section>
   );
 }

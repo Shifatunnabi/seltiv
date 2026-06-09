@@ -46,18 +46,19 @@ export default function WhoWeAre() {
               their full potential. We combine cutting-edge tech with sharp marketing strategy to build products
               people love and brands people trust.
             </p>
-            <div style={{ display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: 16 }}>
+            <div style={{ display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: 16 }} className="stats-grid">
               {statsData.stats.map((s, i) => (
                 <motion.div
                   key={s.label}
-                  className="glass"
+                  className="glass stat-card"
                   style={{ padding: '22px 18px', textAlign: 'center' }}
                   initial={{ opacity: 0, y: 20 }}
                   animate={inView ? { opacity: 1, y: 0 } : {}}
                   transition={{ duration: 0.5, delay: 0.3 + i * 0.1 }}
                 >
-                  <div style={{ fontSize: 20, marginBottom: 6, color: 'var(--green-neon)' }}>{s.icon}</div>
+                  <div className="stat-icon" style={{ fontSize: 20, marginBottom: 6, color: 'var(--green-neon)' }}>{s.icon}</div>
                   <div
+                    className="stat-value"
                     style={{
                       fontSize: 28,
                       fontWeight: 800,
@@ -72,7 +73,7 @@ export default function WhoWeAre() {
                       `0${s.suffix}`
                     )}
                   </div>
-                  <div style={{ fontSize: 12, color: 'var(--muted)', marginTop: 4, fontFamily: 'Space Grotesk, sans-serif' }}>
+                  <div className="stat-label" style={{ fontSize: 12, color: 'var(--muted)', marginTop: 4, fontFamily: 'Space Grotesk, sans-serif' }}>
                     {s.label}
                   </div>
                 </motion.div>
@@ -85,6 +86,11 @@ export default function WhoWeAre() {
       <style>{`
         @media (max-width: 768px) {
           .who-grid { grid-template-columns: 1fr !important; gap: 40px !important; }
+          .stats-grid { gap: 8px !important; }
+          .stat-card { padding: 12px 8px !important; }
+          .stat-icon { fontSize: 16px !important; marginBottom: 4px !important; }
+          .stat-value { font-size: 18px !important; }
+          .stat-label { font-size: 10px !important; margin-top: 2px !important; }
         }
       `}</style>
     </section>

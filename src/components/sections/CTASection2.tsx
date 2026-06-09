@@ -34,7 +34,7 @@ export default function CTASection2() {
             }}
           />
 
-          <div style={{ position: 'relative', zIndex: 1 }}>
+          <div style={{ position: 'relative', zIndex: 1 }} className="cta-container">
             <div className="section-label" style={{ justifyContent: 'center', marginBottom: 20 }}>
               Your Next Big Move Starts Here
             </div>
@@ -53,7 +53,7 @@ export default function CTASection2() {
               From concept to launch — we turn ambitious ideas into exceptional digital experiences.
             </p>
             <a
-              href="mailto:hello@seltiv.com"
+              href="/contact"
               className="btn-green"
               style={{ fontSize: 16, padding: '16px 36px' }}
             >
@@ -62,6 +62,18 @@ export default function CTASection2() {
           </div>
         </motion.div>
       </div>
+
+      <style>{`
+        @media (max-width: 768px) {
+          .cta-container a {
+            display: inline-block;
+            width: 100%;
+            max-width: 300px;
+            box-sizing: border-box;
+            padding: 14px 20px !important;
+          }
+        }
+      `}</style>
     </section>
   );
 }

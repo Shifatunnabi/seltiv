@@ -90,11 +90,11 @@ export default function Hero() {
               Book a Call <em className="arrow">↗</em>
             </a>
             <a
-              href="/contact"
+              href="/portfolio"
               className="btn-ghost"
               style={{ fontSize: 15, padding: '14px 30px', border: '2.5px solid rgba(255,255,255,0.38)' }}
             >
-              View Projects <em className="arrow">→</em>
+              View Portfolio <em className="arrow">→</em>
             </a>
           </div>
 

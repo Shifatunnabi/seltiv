@@ -1,8 +1,8 @@
 'use client';
 
 import { useState } from 'react';
-import SeltivLogo from '@/components/ui/SeltivLogo';
 import { FaFacebookF, FaInstagram, FaLinkedinIn } from 'react-icons/fa';
+import { HiOutlineEnvelope, HiOutlinePhone, HiOutlineMapPin } from 'react-icons/hi2';
 import Image from 'next/image';
 
 const quickLinks = [
@@ -63,10 +63,50 @@ function FooterLink({ label, href }: { label: string; href: string }) {
   );
 }
 
-export default function Footer() {
-  const [emailHover, setEmailHover] = useState(false);
-  const [phoneHover, setPhoneHover] = useState(false);
+function ContactLink({ href, icon, children }: { href?: string; icon: React.ReactNode; children: React.ReactNode }) {
+  const [hovered, setHovered] = useState(false);
+  const content = (
+    <div 
+      style={{ 
+        display: 'flex', 
+        alignItems: 'center', 
+        gap: 12,
+        whiteSpace: 'nowrap'
+      }}
+      onMouseEnter={() => setHovered(true)}
+      onMouseLeave={() => setHovered(false)}
+    >
+      <span style={{ 
+        color: 'var(--green-neon)', 
+        fontSize: 18, 
+        flexShrink: 0, 
+        display: 'flex',
+        alignItems: 'center'
+      }}>
+        {icon}
+      </span>
+      <span style={{ 
+        color: hovered ? 'var(--green-neon)' : 'var(--muted)', 
+        fontSize: 14, 
+        fontFamily: 'Space Grotesk, sans-serif',
+        transition: 'color 0.2s ease'
+      }}>
+        {children}
+      </span>
+    </div>
+  );
 
+  if (href) {
+    return (
+      <a href={href} style={{ textDecoration: 'none' }}>
+        {content}
+      </a>
+    );
+  }
+  return content;
+}
+
+export default function Footer() {
   return (
     <footer
       style={{
@@ -135,63 +175,24 @@ export default function Footer() {
             <div style={{ fontFamily: "'Syne', sans-serif", fontWeight: 700, fontSize: 15, marginBottom: 20 }}>
               Get in Touch
             </div>
-            <div style={{ display: 'flex', flexDirection: 'column', gap: 14 }}>
-              <div style={{ display: 'flex', alignItems: 'center', gap: 12 }}>
-                <span style={{ color: 'var(--green-neon)', fontSize: 14, flexShrink: 0 }}>✉</span>
-                <a 
-                  href="mailto:hello@seltiv.com" 
-                  onMouseEnter={() => setEmailHover(true)}
-                  onMouseLeave={() => setEmailHover(false)}
-                  style={{ 
-                    color: emailHover ? 'var(--green-neon)' : 'var(--muted)', 
-                    fontSize: 14, 
-                    fontFamily: 'Space Grotesk, sans-serif', 
-                    textDecoration: 'none',
-                    transition: 'color 0.2s ease'
-                  }}
-                >
-                  hello@seltiv.com
-                </a>
-              </div>
+            <div style={{ display: 'flex', flexDirection: 'column', gap: 16 }}>
+              <ContactLink href="mailto:hello@seltiv.com" icon={<HiOutlineEnvelope />}>
+                hello@seltiv.com
+              </ContactLink>
+              
               <div style={{ display: 'flex', alignItems: 'flex-start', gap: 12 }}>
-                <span style={{ color: 'var(--green-neon)', fontSize: 14, flexShrink: 0, marginTop: 2 }}>☎</span>
-                <div 
-                  style={{ display: 'flex', flexDirection: 'column', gap: 6 }}
-                  onMouseEnter={() => setPhoneHover(true)}
-                  onMouseLeave={() => setPhoneHover(false)}
-                >
-                  <a 
-                    href="tel:+8801706642396" 
-                    style={{ 
-                      color: phoneHover ? 'var(--green-neon)' : 'var(--muted)', 
-                      fontSize: 14, 
-                      fontFamily: 'Space Grotesk, sans-serif', 
-                      textDecoration: 'none',
-                      transition: 'color 0.2s ease'
-                    }}
-                  >
-                    +880 1706 642396
-                  </a>
-                  <a 
-                    href="tel:+8801885890605" 
-                    style={{ 
-                      color: phoneHover ? 'var(--green-neon)' : 'var(--muted)', 
-                      fontSize: 14, 
-                      fontFamily: 'Space Grotesk, sans-serif', 
-                      textDecoration: 'none',
-                      transition: 'color 0.2s ease'
-                    }}
-                  >
-                    +880 1885 890605
-                  </a>
+                <span style={{ color: 'var(--green-neon)', fontSize: 18, flexShrink: 0, display: 'flex', alignItems: 'center' }}>
+                  <HiOutlinePhone />
+                </span>
+                <div style={{ display: 'flex', flexDirection: 'column', gap: 8 }}>
+                  <PhoneLink href="tel:+8801706642396">+880 1706 642396</PhoneLink>
+                  <PhoneLink href="tel:+8801885890605">+880 1885 890605</PhoneLink>
                 </div>
               </div>
-              <div style={{ display: 'flex', alignItems: 'center', gap: 12 }}>
-                <span style={{ color: 'var(--green-neon)', fontSize: 14, flexShrink: 0 }}>◎</span>
-                <span style={{ color: 'var(--muted)', fontSize: 14, fontFamily: 'Space Grotesk, sans-serif' }}>
-                  Remote-first. Worldwide.
-                </span>
-              </div>
+
+              <ContactLink icon={<HiOutlineMapPin />}>
+                Remote-first. Worldwide.
+              </ContactLink>
             </div>
           </div>
         </div>
@@ -218,9 +219,8 @@ export default function Footer() {
             gap: 40px !important; 
           }
           .footer-links, .footer-contact {
-            display: inline-block;
-            width: 45%;
-            vertical-align: top;
+            display: block;
+            width: 100%;
           }
           .footer-brand {
             margin-bottom: 20px;
@@ -230,3 +230,25 @@ export default function Footer() {
     </footer>
   );
 }
+
+function PhoneLink({ href, children }: { href: string; children: React.ReactNode }) {
+  const [hovered, setHovered] = useState(false);
+  return (
+    <a 
+      href={href} 
+      onMouseEnter={() => setHovered(true)}
+      onMouseLeave={() => setHovered(false)}
+      style={{ 
+        color: hovered ? 'var(--green-neon)' : 'var(--muted)', 
+        fontSize: 14, 
+        fontFamily: 'Space Grotesk, sans-serif', 
+        textDecoration: 'none',
+        transition: 'color 0.2s ease',
+        whiteSpace: 'nowrap'
+      }}
+    >
+      {children}
+    </a>
+  );
+}
+
