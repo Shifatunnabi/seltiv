@@ -355,7 +355,6 @@ h1, h2, h3, h4 {
   .solutions-grid { grid-template-columns: 1fr !important; gap: 36px !important; }
   .solutions-grid > div { order: unset !important; }
   .process-grid { grid-template-columns: 1fr !important; }
-  .process-img { display: none !important; }
 }
 
 /* ─────────────── Hero graphic mobile ─────────────── */

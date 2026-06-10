@@ -29,9 +29,6 @@ export default function Portfolio() {
               Recent <span className="neon">Projects</span>
             </h2>
           </div>
-          <a href="/contact" className="btn-ghost desktop-only">
-            View All Work <em className="arrow">→</em>
-          </a>
         </div>
 
         <div
@@ -44,20 +41,19 @@ export default function Portfolio() {
         </div>
 
         <div className="portfolio-footer" style={{ marginTop: 48, textAlign: 'center' }}>
-          <a href="/portfolio" className="btn-ghost mobile-only-btn">
+          <a href="/portfolio" className="btn-ghost portfolio-view-all">
             View All Work <em className="arrow">→</em>
           </a>
         </div>
       </div>
 
       <style>{`
-        .desktop-only { display: inline-flex; }
-        .mobile-only-btn { display: none; }
-        
+        .portfolio-view-all {
+          display: inline-flex;
+        }
+
         @media (max-width: 768px) {
-          .desktop-only { display: none; }
-          .mobile-only-btn { 
-            display: inline-flex;
+          .portfolio-view-all {
             width: 100%;
             max-width: 280px;
             justify-content: center;

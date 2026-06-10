@@ -40,7 +40,7 @@ export default function Process() {
           style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 70, alignItems: 'center' }}
           className="process-grid"
         >
-          <div style={{ display: 'flex', flexDirection: 'column', gap: 20 }}>
+          <div style={{ display: 'flex', flexDirection: 'column', gap: 20 }} className="process-steps">
             {steps.map((s, i) => (
               <motion.div
                 key={s.n}
@@ -76,9 +76,9 @@ export default function Process() {
 
           <motion.div
             className="img-placeholder process-img"
-            style={{ 
-              height: 420, 
-              background: 'transparent', 
+            style={{
+              height: 420,
+              background: 'transparent',
               border: 'none',
               position: 'relative',
               overflow: 'hidden',
@@ -98,6 +98,20 @@ export default function Process() {
           </motion.div>
         </div>
       </div>
+
+      <style>{`
+        @media (max-width: 768px) {
+          .process-grid {
+            grid-template-columns: 1fr !important;
+            gap: 32px !important;
+          }
+          .process-steps { order: 2; }
+          .process-img {
+            order: 1;
+            height: 300px !important;
+          }
+        }
+      `}</style>
     </section>
   );
 }

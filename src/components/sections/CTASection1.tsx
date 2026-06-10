@@ -30,10 +30,11 @@ export default function CTASection1() {
             transition={{ duration: 0.7 }}
           >
             <div
-              style={{ 
-                height: 420, 
-                borderRadius: 20, 
-                position: 'relative', 
+              className="cta1-photo"
+              style={{
+                height: 420,
+                borderRadius: 20,
+                position: 'relative',
                 overflow: 'hidden',
                 background: 'rgba(255, 255, 255, 0.03)'
               }}
@@ -89,6 +90,7 @@ export default function CTASection1() {
       <style>{`
         @media (max-width: 768px) {
           .cta1-grid { grid-template-columns: 1fr !important; gap: 40px !important; }
+          .cta1-photo { height: auto !important; aspect-ratio: 1 / 1; }
         }
       `}</style>
     </section>
