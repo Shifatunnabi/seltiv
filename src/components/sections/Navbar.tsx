@@ -90,14 +90,26 @@ export default function Navbar() {
             boxShadow: '0 0 18px rgba(0,230,118,0.1), 0 0 1px rgba(0,230,118,0.25)',
           }}
         >
-          <Link href="/" style={{ textDecoration: 'none', flexShrink: 0 }}>
+          <Link
+            href="/"
+            className="nav-logo"
+            style={{ textDecoration: 'none', flexShrink: 0, display: 'flex', alignItems: 'center', gap: 8, padding:4 }}
+          >
             <Image
-              src="/logo.png"
+              src="/icon.png"
               alt="Seltiv"
-              width={160}
-              height={44}
-              className="nav-logo"
-              style={{ height: 44, width: 'auto', display: 'block', objectFit: 'contain' }}
+              width={38}
+              height={38}
+              priority
+              style={{ height: 38, width: 38, borderRadius: 10, display: 'block', objectFit: 'cover' }}
+            />
+            <Image
+              src="/text-logo.png"
+              alt="Seltiv"
+              width={58}
+              height={34}
+              priority
+              style={{ height: 34, width: 'auto', display: 'block', objectFit: 'contain' }}
             />
           </Link>
 

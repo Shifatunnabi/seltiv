@@ -10,10 +10,26 @@ import CTASection1 from '@/components/sections/CTASection1';
 import Reviews from '@/components/sections/Reviews';
 import CTASection2 from '@/components/sections/CTASection2';
 import Footer from '@/components/sections/Footer';
+import FAQSection from '@/components/sections/FAQSection';
+import { faqs } from '@/data/faqs';
+
+const faqJsonLd = {
+  '@context': 'https://schema.org',
+  '@type': 'FAQPage',
+  mainEntity: faqs.map((faq) => ({
+    '@type': 'Question',
+    name: faq.question,
+    acceptedAnswer: { '@type': 'Answer', text: faq.answer },
+  })),
+};
 
 export default function Home() {
   return (
     <>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(faqJsonLd) }}
+      />
       <Navbar />
       <main>
         <Hero />
@@ -25,6 +41,7 @@ export default function Home() {
         <Portfolio />
         <CTASection1 />
         <Reviews />
+        <FAQSection />
         <CTASection2 />
       </main>
       <Footer />

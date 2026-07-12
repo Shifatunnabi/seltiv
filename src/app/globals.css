@@ -315,7 +315,7 @@ h1, h2, h3, h4 {
   .nav-links-desktop { display: none !important; }
   .hamburger-btn { display: flex !important; }
   .nav-cta-desktop { display: none !important; }
-  .nav-logo { height: 30px !important; }
+  .nav-logo { transform: scale(0.78); transform-origin: left center; }
   .nav-wrapper { width: 100% !important; }
   .avatar-circle { width: 32px !important; height: 32px !important; font-size: 10px !important; margin-left: -8px !important; }
   .avatar-circle:first-child { margin-left: 0 !important; }

@@ -2,9 +2,19 @@ import Navbar from '@/components/sections/Navbar';
 import Footer from '@/components/sections/Footer';
 import ContactSection from '@/components/sections/ContactSection';
 
-export const metadata = {
-  title: 'Contact Us — Seltiv',
-  description: 'Tell us about your dream project and let\'s build the future together.',
+import type { Metadata } from 'next';
+
+export const metadata: Metadata = {
+  title: 'Contact Us — Get a Free Software & AI Consultation',
+  description:
+    'Tell us about your project. Book a free consultation call for custom software development, AI agent development, business automation, or any digital service you need.',
+  alternates: { canonical: '/contact' },
+  openGraph: {
+    title: 'Contact Seltiv — Free Consultation',
+    description:
+      'Book a free consultation for custom software development, AI automation, or any digital service you need.',
+    url: '/contact',
+  },
 };
 
 export default function ContactPage() {

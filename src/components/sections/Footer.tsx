@@ -13,9 +13,9 @@ const quickLinks = [
 ];
 
 const socialIcons = [
-  { label: 'FB', href: 'https://facebook.com', icon: <FaFacebookF /> },
-  { label: 'IG', href: 'https://instagram.com', icon: <FaInstagram /> },
-  { label: 'LN', href: 'https://linkedin.com', icon: <FaLinkedinIn /> },
+  { label: 'FB', href: 'https://facebook.com/share/1Btk9Gk4kC/', icon: <FaFacebookF /> },
+  { label: 'IG', href: 'https://www.instagram.com/getseltiv/', icon: <FaInstagram /> },
+  { label: 'LN', href: 'https://www.linkedin.com/company/seltiv/', icon: <FaLinkedinIn /> }
 ];
 
 function SocialIcon({ icon, href }: { icon: React.ReactNode; href: string }) {
@@ -116,25 +116,6 @@ export default function Footer() {
         overflow: 'hidden',
       }}
     >
-      {/* Background Logo */}
-      <div
-        style={{
-          position: 'absolute', bottom: -50, left: '50%', transform: 'translateX(-50%)',
-          width: '80%',
-          maxWidth: 800,
-          aspectRatio: '3 / 1',
-          opacity: 0.05,
-          pointerEvents: 'none', userSelect: 'none',
-        }}
-      >
-        <Image 
-          src="/logo.png" 
-          alt="Seltiv Watermark" 
-          fill 
-          style={{ objectFit: 'contain', filter: 'grayscale(1) brightness(2)' }} 
-        />
-      </div>
-
       <div className="container" style={{ position: 'relative', zIndex: 1, padding: '70px 0 30px' }}>
         {/* Main grid */}
         <div
@@ -212,7 +193,55 @@ export default function Footer() {
         </div>
       </div>
 
+      {/* Watermark marquee */}
+      <div
+        style={{
+          position: 'relative',
+          width: '100%',
+          height: 140,
+          overflow: 'hidden',
+          pointerEvents: 'none',
+          userSelect: 'none',
+          WebkitMaskImage: 'linear-gradient(90deg, transparent, black 10%, black 90%, transparent)',
+          maskImage: 'linear-gradient(90deg, transparent, black 10%, black 90%, transparent)',
+        }}
+      >
+        <div className="footer-marquee-track">
+          <div className="footer-marquee-group">
+            {Array.from({ length: 8 }).map((_, i) => (
+              <Image key={i} src="/logo.png" alt="" width={124} height={48} style={{ height: '100%', width: 'auto', objectFit: 'contain' }} />
+            ))}
+          </div>
+          <div className="footer-marquee-group" aria-hidden="true">
+            {Array.from({ length: 8 }).map((_, i) => (
+              <Image key={i} src="/logo.png" alt="" width={124} height={48} style={{ height: '100%', width: 'auto', objectFit: 'contain' }} />
+            ))}
+          </div>
+        </div>
+      </div>
+
       <style>{`
+        .footer-marquee-track {
+          display: flex;
+          align-items: center;
+          height: 100%;
+          width: max-content;
+          animation: footer-marquee-scroll 26s linear infinite;
+        }
+        .footer-marquee-group {
+          display: flex;
+          align-items: center;
+          flex-shrink: 0;
+          height: 100%;
+          gap: 44px;
+          padding-right: 44px;
+          opacity: 0.06;
+          filter: grayscale(1) brightness(2);
+        }
+        @keyframes footer-marquee-scroll {
+          from { transform: translateX(0); }
+          to { transform: translateX(-50%); }
+        }
         @media (max-width: 768px) {
           .footer-grid { 
             grid-template-columns: 1fr !important; 

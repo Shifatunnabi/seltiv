@@ -38,6 +38,23 @@ const categories: Category[] = [
     ],
   },
   {
+    icon: '⬢', iconColor: '#00e676', glowColor: 'rgba(0,230,118,0.12)',
+    title: 'AI Integration & Business Automation', shortTitle: 'AI & Automation',
+    services: [
+      { name: 'AI Agent Development', desc: 'Custom AI agents that handle support, sales, research, and internal operations autonomously.' },
+      { name: 'AI Integration & Automation', desc: 'Embed LLMs and machine-learning capabilities into your existing products and workflows.' },
+      { name: 'Business Automation', desc: 'Automate repetitive processes across your business to cut costs and eliminate manual errors.' },
+      { name: 'API Integration & Cloud', desc: 'Connect third-party services via robust APIs, with cloud deployment and ongoing maintenance.' },
+    ],
+    tech: [
+      { name: 'OpenAI', color: '#74aa9c' }, { name: 'Claude', color: '#d97757' },
+      { name: 'LangChain', color: '#1c3c3c' }, { name: 'Python', color: '#3776ab' },
+      { name: 'n8n', color: '#ea4b71' }, { name: 'Zapier', color: '#ff4a00' },
+      { name: 'AWS', color: '#ff9900' }, { name: 'Docker', color: '#2496ed' },
+      { name: 'Vercel', color: '#ffffff' },
+    ],
+  },
+  {
     icon: '◆', iconColor: '#f6c90e', glowColor: 'rgba(246,201,14,0.10)',
     title: 'Brand Identity & Graphic Design', shortTitle: 'Branding',
     services: [

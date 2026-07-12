@@ -42,9 +42,7 @@ export default function WhoWeAre() {
             transition={{ duration: 0.7, delay: 0.15, ease: 'easeOut' }}
           >
             <p style={{ color: 'var(--muted)', fontSize: 16, lineHeight: 1.8, marginBottom: 40 }}>
-              Seltiv is a full-service growth and technology agency helping startups, SMEs, and enterprises unlock
-              their full potential. We combine cutting-edge tech with sharp marketing strategy to build products
-              people love and brands people trust.
+              Seltiv is a full-service growth and technology agency helping startups, SMEs, and enterprises unlock their full potential. From custom software and SaaS product development to AI agents and business automation, we combine cutting-edge tech with sharp marketing strategy to build products people love and brands people trust.
             </p>
             <div style={{ display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: 16 }} className="stats-grid">
               {statsData.stats.map((s, i) => (

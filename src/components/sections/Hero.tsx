@@ -81,8 +81,8 @@ export default function Hero() {
               lineHeight: 1.7,
             }}
           >
-            Your all-in-one growth &amp; technology partner for branding, marketing, and software
-            solutions that scale.
+            Your all-in-one growth &amp; technology partner for custom software development,
+            AI automation, branding, and marketing solutions that scale.
           </p>
 
           <div style={{ display: 'flex', gap: 14, flexWrap: 'wrap' }}>
