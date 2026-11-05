@@ -20,7 +20,7 @@ export async function POST(req: Request) {
 
     const mailOptions = {
       from: process.env.MAIL_FROM,
-      to: 'hello@seltiv.com',
+      to: process.env.NEXT_PUBLIC_CONTACT_EMAIL,
       subject: `New Project Inquiry from ${name}`,
       text: `
         Name: ${name}

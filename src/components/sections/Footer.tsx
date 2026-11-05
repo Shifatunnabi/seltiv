@@ -157,8 +157,8 @@ export default function Footer() {
               Get in Touch
             </div>
             <div style={{ display: 'flex', flexDirection: 'column', gap: 16 }}>
-              <ContactLink href="mailto:hello@seltiv.com" icon={<HiOutlineEnvelope />}>
-                hello@seltiv.com
+              <ContactLink href={`mailto:${process.env.NEXT_PUBLIC_CONTACT_EMAIL}`} icon={<HiOutlineEnvelope />}>
+                {process.env.NEXT_PUBLIC_CONTACT_EMAIL}
               </ContactLink>
               
               <div style={{ display: 'flex', alignItems: 'flex-start', gap: 12 }}>
