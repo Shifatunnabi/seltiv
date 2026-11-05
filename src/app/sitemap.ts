@@ -1,9 +1,8 @@
 import type { MetadataRoute } from 'next';
-
-const SITE_URL = 'https://www.seltiv.com';
+import { SITE_URL } from '@/lib/content';
 
 export default function sitemap(): MetadataRoute.Sitemap {
-  const routes = ['', '/pricing', '/portfolio', '/contact'];
+  const routes = ['', '/services', '/work', '/pricing', '/contact'];
 
   return routes.map((route) => ({
     url: `${SITE_URL}${route}`,

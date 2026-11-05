@@ -1,0 +1,169 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 1200" role="img" aria-labelledby="title">
+<title id="title">Seltiv block field with offset S arms and center square</title>
+<defs>
+<rect id="cell" width="32" height="32" rx="6"/>
+<g id="row"><use href="#cell" x="9"/><use href="#cell" x="59"/><use href="#cell" x="109"/><use href="#cell" x="159"/><use href="#cell" x="209"/><use href="#cell" x="259"/><use href="#cell" x="309"/><use href="#cell" x="359"/><use href="#cell" x="409"/><use href="#cell" x="459"/><use href="#cell" x="509"/><use href="#cell" x="559"/><use href="#cell" x="609"/><use href="#cell" x="659"/><use href="#cell" x="709"/><use href="#cell" x="759"/><use href="#cell" x="809"/><use href="#cell" x="859"/><use href="#cell" x="909"/><use href="#cell" x="959"/><use href="#cell" x="1009"/><use href="#cell" x="1059"/><use href="#cell" x="1109"/><use href="#cell" x="1159"/></g>
+</defs>
+<g fill="#111A15">
+<use href="#row" y="9"/>
+<use href="#row" y="59"/>
+<use href="#row" y="109"/>
+<use href="#row" y="159"/>
+<use href="#row" y="209"/>
+<use href="#row" y="259"/>
+<use href="#row" y="309"/>
+<use href="#row" y="359"/>
+<use href="#row" y="409"/>
+<use href="#row" y="459"/>
+<use href="#row" y="509"/>
+<use href="#row" y="559"/>
+<use href="#row" y="609"/>
+<use href="#row" y="659"/>
+<use href="#row" y="709"/>
+<use href="#row" y="759"/>
+<use href="#row" y="809"/>
+<use href="#row" y="859"/>
+<use href="#row" y="909"/>
+<use href="#row" y="959"/>
+<use href="#row" y="1009"/>
+<use href="#row" y="1059"/>
+<use href="#row" y="1109"/>
+<use href="#row" y="1159"/>
+</g>
+<g fill="#00E676">
+<use href="#cell" x="409" y="259" opacity="0.8"/>
+<use href="#cell" x="459" y="259" opacity="1"/>
+<use href="#cell" x="509" y="259" opacity="0.35"/>
+<use href="#cell" x="559" y="259" opacity="0.5"/>
+<use href="#cell" x="609" y="259" opacity="0.65"/>
+<use href="#cell" x="659" y="259" opacity="0.8"/>
+<use href="#cell" x="709" y="259" opacity="1"/>
+<use href="#cell" x="759" y="259" opacity="0.35"/>
+<use href="#cell" x="809" y="259" opacity="0.5"/>
+<use href="#cell" x="859" y="259" opacity="0.65"/>
+<use href="#cell" x="909" y="259" opacity="0.8"/>
+<use href="#cell" x="409" y="309" opacity="0.35"/>
+<use href="#cell" x="459" y="309" opacity="0.5"/>
+<use href="#cell" x="509" y="309" opacity="0.65"/>
+<use href="#cell" x="559" y="309" opacity="0.8"/>
+<use href="#cell" x="609" y="309" opacity="1"/>
+<use href="#cell" x="659" y="309" opacity="0.35"/>
+<use href="#cell" x="709" y="309" opacity="0.5"/>
+<use href="#cell" x="759" y="309" opacity="0.65"/>
+<use href="#cell" x="809" y="309" opacity="0.8"/>
+<use href="#cell" x="859" y="309" opacity="1"/>
+<use href="#cell" x="909" y="309" opacity="0.35"/>
+<use href="#cell" x="409" y="359" opacity="0.65"/>
+<use href="#cell" x="459" y="359" opacity="0.8"/>
+<use href="#cell" x="509" y="359" opacity="1"/>
+<use href="#cell" x="559" y="359" opacity="0.35"/>
+<use href="#cell" x="609" y="359" opacity="0.5"/>
+<use href="#cell" x="659" y="359" opacity="0.65"/>
+<use href="#cell" x="709" y="359" opacity="0.8"/>
+<use href="#cell" x="759" y="359" opacity="1"/>
+<use href="#cell" x="809" y="359" opacity="0.35"/>
+<use href="#cell" x="859" y="359" opacity="0.5"/>
+<use href="#cell" x="909" y="359" opacity="0.65"/>
+<use href="#cell" x="259" y="409" opacity="0.5"/>
+<use href="#cell" x="309" y="409" opacity="0.65"/>
+<use href="#cell" x="359" y="409" opacity="0.8"/>
+<use href="#cell" x="409" y="409" opacity="1"/>
+<use href="#cell" x="459" y="409" opacity="0.35"/>
+<use href="#cell" x="509" y="409" opacity="0.5"/>
+<use href="#cell" x="559" y="409" opacity="0.65"/>
+<use href="#cell" x="609" y="409" opacity="0.8"/>
+<use href="#cell" x="659" y="409" opacity="1"/>
+<use href="#cell" x="709" y="409" opacity="0.35"/>
+<use href="#cell" x="759" y="409" opacity="0.5"/>
+<use href="#cell" x="809" y="409" opacity="0.65"/>
+<use href="#cell" x="859" y="409" opacity="0.8"/>
+<use href="#cell" x="909" y="409" opacity="1"/>
+<use href="#cell" x="259" y="459" opacity="0.8"/>
+<use href="#cell" x="309" y="459" opacity="1"/>
+<use href="#cell" x="359" y="459" opacity="0.35"/>
+<use href="#cell" x="409" y="459" opacity="0.5"/>
+<use href="#cell" x="259" y="509" opacity="0.35"/>
+<use href="#cell" x="309" y="509" opacity="0.5"/>
+<use href="#cell" x="359" y="509" opacity="0.65"/>
+<use href="#cell" x="409" y="509" opacity="0.8"/>
+<use href="#cell" x="509" y="509" opacity="0.35"/>
+<use href="#cell" x="559" y="509" opacity="0.5"/>
+<use href="#cell" x="609" y="509" opacity="0.65"/>
+<use href="#cell" x="659" y="509" opacity="0.8"/>
+<use href="#cell" x="259" y="559" opacity="0.65"/>
+<use href="#cell" x="309" y="559" opacity="0.8"/>
+<use href="#cell" x="359" y="559" opacity="1"/>
+<use href="#cell" x="409" y="559" opacity="0.35"/>
+<use href="#cell" x="509" y="559" opacity="0.65"/>
+<use href="#cell" x="559" y="559" opacity="0.8"/>
+<use href="#cell" x="609" y="559" opacity="1"/>
+<use href="#cell" x="659" y="559" opacity="0.35"/>
+<use href="#cell" x="509" y="609" opacity="1"/>
+<use href="#cell" x="559" y="609" opacity="0.35"/>
+<use href="#cell" x="609" y="609" opacity="0.5"/>
+<use href="#cell" x="659" y="609" opacity="0.65"/>
+<use href="#cell" x="759" y="609" opacity="1"/>
+<use href="#cell" x="809" y="609" opacity="0.35"/>
+<use href="#cell" x="859" y="609" opacity="0.5"/>
+<use href="#cell" x="909" y="609" opacity="0.65"/>
+<use href="#cell" x="509" y="659" opacity="0.5"/>
+<use href="#cell" x="559" y="659" opacity="0.65"/>
+<use href="#cell" x="609" y="659" opacity="0.8"/>
+<use href="#cell" x="659" y="659" opacity="1"/>
+<use href="#cell" x="759" y="659" opacity="0.5"/>
+<use href="#cell" x="809" y="659" opacity="0.65"/>
+<use href="#cell" x="859" y="659" opacity="0.8"/>
+<use href="#cell" x="909" y="659" opacity="1"/>
+<use href="#cell" x="759" y="709" opacity="0.8"/>
+<use href="#cell" x="809" y="709" opacity="1"/>
+<use href="#cell" x="859" y="709" opacity="0.35"/>
+<use href="#cell" x="909" y="709" opacity="0.5"/>
+<use href="#cell" x="259" y="759" opacity="0.35"/>
+<use href="#cell" x="309" y="759" opacity="0.5"/>
+<use href="#cell" x="359" y="759" opacity="0.65"/>
+<use href="#cell" x="409" y="759" opacity="0.8"/>
+<use href="#cell" x="459" y="759" opacity="1"/>
+<use href="#cell" x="509" y="759" opacity="0.35"/>
+<use href="#cell" x="559" y="759" opacity="0.5"/>
+<use href="#cell" x="609" y="759" opacity="0.65"/>
+<use href="#cell" x="659" y="759" opacity="0.8"/>
+<use href="#cell" x="709" y="759" opacity="1"/>
+<use href="#cell" x="759" y="759" opacity="0.35"/>
+<use href="#cell" x="809" y="759" opacity="0.5"/>
+<use href="#cell" x="859" y="759" opacity="0.65"/>
+<use href="#cell" x="909" y="759" opacity="0.8"/>
+<use href="#cell" x="259" y="809" opacity="0.65"/>
+<use href="#cell" x="309" y="809" opacity="0.8"/>
+<use href="#cell" x="359" y="809" opacity="1"/>
+<use href="#cell" x="409" y="809" opacity="0.35"/>
+<use href="#cell" x="459" y="809" opacity="0.5"/>
+<use href="#cell" x="509" y="809" opacity="0.65"/>
+<use href="#cell" x="559" y="809" opacity="0.8"/>
+<use href="#cell" x="609" y="809" opacity="1"/>
+<use href="#cell" x="659" y="809" opacity="0.35"/>
+<use href="#cell" x="709" y="809" opacity="0.5"/>
+<use href="#cell" x="759" y="809" opacity="0.65"/>
+<use href="#cell" x="259" y="859" opacity="1"/>
+<use href="#cell" x="309" y="859" opacity="0.35"/>
+<use href="#cell" x="359" y="859" opacity="0.5"/>
+<use href="#cell" x="409" y="859" opacity="0.65"/>
+<use href="#cell" x="459" y="859" opacity="0.8"/>
+<use href="#cell" x="509" y="859" opacity="1"/>
+<use href="#cell" x="559" y="859" opacity="0.35"/>
+<use href="#cell" x="609" y="859" opacity="0.5"/>
+<use href="#cell" x="659" y="859" opacity="0.65"/>
+<use href="#cell" x="709" y="859" opacity="0.8"/>
+<use href="#cell" x="759" y="859" opacity="1"/>
+<use href="#cell" x="259" y="909" opacity="0.5"/>
+<use href="#cell" x="309" y="909" opacity="0.65"/>
+<use href="#cell" x="359" y="909" opacity="0.8"/>
+<use href="#cell" x="409" y="909" opacity="1"/>
+<use href="#cell" x="459" y="909" opacity="0.35"/>
+<use href="#cell" x="509" y="909" opacity="0.5"/>
+<use href="#cell" x="559" y="909" opacity="0.65"/>
+<use href="#cell" x="609" y="909" opacity="0.8"/>
+<use href="#cell" x="659" y="909" opacity="1"/>
+<use href="#cell" x="709" y="909" opacity="0.35"/>
+<use href="#cell" x="759" y="909" opacity="0.5"/>
+</g>
+</svg>

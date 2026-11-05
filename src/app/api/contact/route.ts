@@ -1,9 +1,33 @@
 import { NextResponse } from 'next/server';
 import nodemailer from 'nodemailer';
 
+const esc = (v: unknown) =>
+  String(v ?? '')
+    .slice(0, 5000)
+    .replace(/&/g, '&amp;')
+    .replace(/</g, '&lt;')
+    .replace(/>/g, '&gt;')
+    .replace(/"/g, '&quot;')
+    .replace(/'/g, '&#39;');
+
+const row = (label: string, value: string) =>
+  value
+    ? `<tr><td style="padding:10px 0;border-bottom:1px solid #1e2a23;"><div style="font-family:monospace;font-size:11px;letter-spacing:.12em;text-transform:uppercase;color:#8a938d;">${label}</div><div style="font-size:16px;color:#ffffff;margin-top:4px;white-space:pre-wrap;">${value}</div></td></tr>`
+    : '';
+
 export async function POST(req: Request) {
   try {
-    const { name, email, phone, budget, description } = await req.json();
+    const body = await req.json();
+    const name = esc(body.name);
+    const email = esc(body.email);
+    const description = esc(body.description);
+    if (!name || !email || !description || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(String(body.email))) {
+      return NextResponse.json({ message: 'Missing or invalid fields' }, { status: 400 });
+    }
+    const phone = esc(body.phone);
+    const company = esc(body.company);
+    const budget = esc(body.budget);
+    const services = Array.isArray(body.services) ? body.services.map(esc).join(', ') : esc(body.services);
 
     const transporter = nodemailer.createTransport({
       host: process.env.SMTP_HOST,
@@ -18,59 +42,36 @@ export async function POST(req: Request) {
       },
     });
 
-    const mailOptions = {
+    await transporter.sendMail({
       from: process.env.MAIL_FROM,
       to: process.env.NEXT_PUBLIC_CONTACT_EMAIL,
-      subject: `New Project Inquiry from ${name}`,
-      text: `
-        Name: ${name}
-        Email: ${email}
-        Phone: ${phone}
-        Budget: ${budget}
-        Description: ${description}
-      `,
+      replyTo: String(body.email),
+      subject: `New project enquiry: ${String(body.name).slice(0, 80)}${services ? ` (${String(services).slice(0, 80)})` : ''}`,
+      text: [
+        `Name: ${body.name}`,
+        `Email: ${body.email}`,
+        `Company: ${body.company ?? ''}`,
+        `Phone: ${body.phone ?? ''}`,
+        `Services: ${Array.isArray(body.services) ? body.services.join(', ') : ''}`,
+        `Budget: ${body.budget ?? ''}`,
+        '',
+        String(body.description ?? ''),
+      ].join('\n'),
       html: `
-        <div style="font-family: 'Syne', sans-serif, Arial; max-width: 600px; margin: 0 auto; padding: 30px; border: 1px solid rgba(0,230,118,0.3); border-radius: 16px; background-color: #05090f; color: #ffffff;">
-          <div style="text-align: center; margin-bottom: 30px;">
-            <h1 style="color: #00e676; margin: 0; font-size: 24px; text-transform: uppercase; letter-spacing: 2px;">New Inquiry</h1>
-            <p style="color: #a0aec0; margin: 5px 0 0; font-size: 14px;">Received from Seltiv Contact Form</p>
-          </div>
-          
-          <div style="background: rgba(255,255,255,0.03); padding: 25px; border-radius: 12px; border: 1px solid rgba(255,255,255,0.05);">
-            <div style="margin-bottom: 20px;">
-              <label style="display: block; color: #00e676; font-size: 12px; font-weight: 700; text-transform: uppercase; margin-bottom: 5px;">Client Name</label>
-              <div style="font-size: 16px; color: #fff;">${name}</div>
-            </div>
-            
-            <div style="margin-bottom: 20px;">
-              <label style="display: block; color: #00e676; font-size: 12px; font-weight: 700; text-transform: uppercase; margin-bottom: 5px;">Email Address</label>
-              <div style="font-size: 16px; color: #fff;">${email}</div>
-            </div>
-            
-            <div style="margin-bottom: 20px;">
-              <label style="display: block; color: #00e676; font-size: 12px; font-weight: 700; text-transform: uppercase; margin-bottom: 5px;">Phone / WhatsApp</label>
-              <div style="font-size: 16px; color: #fff;">${phone}</div>
-            </div>
-            
-            <div style="margin-bottom: 20px;">
-              <label style="display: block; color: #00e676; font-size: 12px; font-weight: 700; text-transform: uppercase; margin-bottom: 5px;">Project Budget</label>
-              <div style="font-size: 16px; color: #fff;">${budget}</div>
-            </div>
-            
-            <div style="margin-top: 25px; padding-top: 20px; border-top: 1px solid rgba(255,255,255,0.1);">
-              <label style="display: block; color: #00e676; font-size: 12px; font-weight: 700; text-transform: uppercase; margin-bottom: 10px;">Project Description</label>
-              <div style="font-size: 15px; color: #cbd5e0; line-height: 1.6; white-space: pre-wrap;">${description}</div>
-            </div>
-          </div>
-          
-          <div style="text-align: center; margin-top: 30px; font-size: 12px; color: #718096;">
-            © 2026 Seltiv. All rights reserved.
-          </div>
+        <div style="font-family:Helvetica,Arial,sans-serif;max-width:600px;margin:0 auto;padding:32px;border-radius:20px;background:#050807;color:#fff;">
+          <div style="font-family:monospace;font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:#00e676;">New enquiry · seltiv.com</div>
+          <h1 style="font-weight:400;font-size:28px;letter-spacing:-.02em;margin:12px 0 24px;">${name}</h1>
+          <table style="width:100%;border-collapse:collapse;">
+            ${row('Email', email)}
+            ${row('Company', company)}
+            ${row('Phone / WhatsApp', phone)}
+            ${row('Services', services)}
+            ${row('Budget', budget)}
+            ${row('Project', description)}
+          </table>
         </div>
       `,
-    };
-
-    await transporter.sendMail(mailOptions);
+    });
 
     return NextResponse.json({ message: 'Email sent successfully' }, { status: 200 });
   } catch (error) {

@@ -1,48 +1,39 @@
-import Navbar from '@/components/sections/Navbar';
-import Hero from '@/components/sections/Hero';
-import MarqueeSection from '@/components/sections/MarqueeSection';
-import WhoWeAre from '@/components/sections/WhoWeAre';
-import Solutions from '@/components/sections/Solutions';
-import Services from '@/components/sections/Services';
-import Process from '@/components/sections/Process';
-import Portfolio from '@/components/sections/Portfolio';
-import CTASection1 from '@/components/sections/CTASection1';
-import Reviews from '@/components/sections/Reviews';
-import CTASection2 from '@/components/sections/CTASection2';
-import Footer from '@/components/sections/Footer';
-import FAQSection from '@/components/sections/FAQSection';
-import { faqs } from '@/data/faqs';
+import Hero from '@/components/home/Hero';
+import Manifesto from '@/components/home/Manifesto';
+import Reel from '@/components/home/Reel';
+import Capabilities from '@/components/home/Capabilities';
+import Stack from '@/components/home/Stack';
+import Work from '@/components/home/Work';
+import Impact from '@/components/home/Impact';
+import Process from '@/components/home/Process';
+import Engagements from '@/components/home/Engagements';
+import Fractional from '@/components/home/Fractional';
+import FAQ from '@/components/home/FAQ';
+import Footer from '@/components/site/Footer';
+import { faqs } from '@/lib/content';
 
 const faqJsonLd = {
   '@context': 'https://schema.org',
   '@type': 'FAQPage',
-  mainEntity: faqs.map((faq) => ({
-    '@type': 'Question',
-    name: faq.question,
-    acceptedAnswer: { '@type': 'Answer', text: faq.answer },
-  })),
+  mainEntity: faqs.map((f) => ({ '@type': 'Question', name: f.question, acceptedAnswer: { '@type': 'Answer', text: f.answer } })),
 };
 
 export default function Home() {
   return (
     <>
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(faqJsonLd) }}
-      />
-      <Navbar />
-      <main>
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(faqJsonLd) }} />
+      <main className="relative z-10 bg-ink">
         <Hero />
-        <MarqueeSection />
-        <WhoWeAre />
-        <Services />
-        <Solutions />
+        <Manifesto />
+        <Reel />
+        <Work />
+        <Impact />
+        <Capabilities />
+        <Stack />
         <Process />
-        <Portfolio />
-        <CTASection1 />
-        <Reviews />
-        <FAQSection />
-        <CTASection2 />
+        <Engagements />
+        <Fractional />
+        <FAQ />
       </main>
       <Footer />
     </>

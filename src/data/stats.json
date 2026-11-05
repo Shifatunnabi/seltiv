@@ -1,7 +1,0 @@
-{
-  "stats": [
-    { "value": 50, "suffix": "+", "label": "Projects Delivered", "icon": "◈" },
-    { "value": 30, "suffix": "+", "label": "Happy Clients", "icon": "◉" },
-    { "value": 3, "suffix": "+", "label": "Years of Excellence", "icon": "◆" }
-  ]
-}
