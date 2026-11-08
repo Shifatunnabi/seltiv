@@ -533,3 +533,9 @@ button:hover .arrow-inline,
   width: 30px;
   height: 30px;
 }
+
+/* Hide the "Powered by Netlify" badge Netlify injects into the hosted site.
+   (Can also be switched off in Netlify: Project configuration → General.) */
+#nl-badge-frame {
+  display: none !important;
+}
