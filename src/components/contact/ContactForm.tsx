@@ -6,7 +6,7 @@ import { capabilities } from '@/lib/content';
 import { Arrow } from '@/components/ui/Button';
 
 const SERVICES = [...capabilities.map((c) => ({ id: c.slug, label: c.title })), { id: 'fractional', label: 'Brand / marketing / content' }];
-const BUDGETS = ['< $2k', '$2k – $5k', '$5k – $10k', '$10k – $25k', '$25k+'];
+const BUDGETS = ['< $1k', '$1k – $3k', '$3k – $5k', '$5k – $10k', '$10k+'];
 
 function Chip({ active, onClick, children }: { active: boolean; onClick: () => void; children: React.ReactNode }) {
   return (

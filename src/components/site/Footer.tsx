@@ -1,5 +1,5 @@
 import Link from 'next/link';
-import { CONTACT_EMAIL, PHONES, capabilities, nav } from '@/lib/content';
+import { CONTACT_EMAIL, PHONES, SOCIAL_LINKS, capabilities, nav } from '@/lib/content';
 import Button from '@/components/ui/Button';
 import { Mark } from '@/components/ui/Logo';
 
@@ -52,7 +52,7 @@ export default function Footer() {
                 <ul className="space-y-1.5 md:space-y-2">
                   {capabilities.map((c) => (
                     <li key={c.slug}>
-                      <Link href={`/services#${c.slug}`} className="link-u">
+                      <Link href={`/services/${c.slug}`} className="link-u">
                         {c.short}
                       </Link>
                     </li>
@@ -69,6 +69,9 @@ export default function Footer() {
                   ))}
                 </div>
                 <span className="mt-1 hidden text-ink/70 md:block">Dhaka · Working worldwide</span>
+                <div className="mt-3 flex flex-wrap gap-x-4 gap-y-1">
+                  {SOCIAL_LINKS.map((profile) => <a key={profile.label} href={profile.url} target="_blank" rel="noopener noreferrer" className="link-u">{profile.label}</a>)}
+                </div>
               </div>
             </div>
           </div>

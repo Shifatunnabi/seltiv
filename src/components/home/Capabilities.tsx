@@ -25,7 +25,7 @@ export default function Capabilities() {
             />
             <FadeUp delay={0.3}>
               <p className="mt-8 max-w-[52ch] text-lg leading-relaxed text-fog">
-                AI agents, AI products, SaaS, custom software and websites. One senior team takes each from strategy to
+                Websites & e-commerce, AI agents & automation, custom software, AI products and SaaS platforms. One senior team takes each from strategy to
                 launch, and builds every one as if AI will be part of its future.
               </p>
             </FadeUp>
@@ -98,7 +98,7 @@ export default function Capabilities() {
                               From <span className="text-mint">{c.from}</span>
                             </span>
                             <span>{c.timeline}</span>
-                            <Link href={`/services#${c.slug}`} className="link-u text-white">
+                            <Link href={`/services/${c.slug}`} className="link-u text-white">
                               Explore <span className="arrow-inline">→</span>
                             </Link>
                           </div>

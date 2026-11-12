@@ -57,8 +57,7 @@ export default function Hero() {
             >
               <span className="shine-glow" aria-hidden />
               <p className="text-base leading-[1.55] text-fog md:text-[17px]">
-                AI agents, AI products, SaaS, custom software and websites. Designed and engineered from the first
-                workflow to the production release.
+                Seltiv is a Dhaka-based product studio building websites & e-commerce, AI agents & automation, custom software, AI products and SaaS platforms. From the first workflow to launch.
               </p>
               <ul className="mt-5 hidden flex-wrap gap-1.5 sm:flex" aria-label="What we build">
                 {capabilities.map((c) => (

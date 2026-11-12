@@ -82,7 +82,7 @@ export default function Header() {
           </Link>
 
           <div className="relative z-10 flex items-center gap-2">
-            <span className="hidden items-center gap-2.5 rounded-full border border-white/10 bg-white/[0.03] px-4 py-2 font-mono text-[11px] uppercase tracking-[0.14em] text-fog md:inline-flex">
+            <span className="hidden items-center gap-2.5 rounded-full border border-white/10 bg-white/[0.03] px-4 py-2 font-sans text-xs font-medium tracking-[0.01em] text-fog md:inline-flex">
               <span className="live-dot" />
               Accepting new projects
             </span>
@@ -172,7 +172,7 @@ export default function Header() {
                   <ul className="space-y-2.5">
                     {capabilities.map((c) => (
                       <li key={c.slug}>
-                        <Link href={`/services#${c.slug}`} className="link-u text-lg text-fog hover:text-white">
+                        <Link href={`/services/${c.slug}`} className="link-u text-lg text-fog hover:text-white">
                           {c.title}
                         </Link>
                       </li>

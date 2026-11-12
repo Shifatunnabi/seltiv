@@ -1,4 +1,6 @@
 import type { Metadata } from 'next';
+import Link from 'next/link';
+import { pageMetadata } from '@/lib/seo';
 import Image from 'next/image';
 import PageHero from '@/components/site/PageHero';
 import Footer from '@/components/site/Footer';
@@ -8,17 +10,19 @@ import Stack from '@/components/home/Stack';
 import FadeUp from '@/components/motion/FadeUp';
 import Button from '@/components/ui/Button';
 import { capabilities } from '@/lib/content';
+import { serviceSchema } from '@/lib/seo';
+import JsonLd from '@/components/site/JsonLd';
 
-export const metadata: Metadata = {
-  title: 'Services — AI agents, AI products, SaaS, custom software & websites',
-  description:
-    'Seltiv designs and builds AI agents & automation, AI products, SaaS platforms, custom software and high-performance websites. Fixed scopes, weekly demos and senior engineers.',
-  alternates: { canonical: '/services' },
-};
+export const metadata: Metadata = pageMetadata({
+  title: 'Websites, AI & Software Development Services',
+  description: 'Explore Seltiv’s website, e-commerce, AI agent, custom software, AI product and SaaS development services. Based in Dhaka, working worldwide.',
+  path: '/services',
+});
 
 export default function ServicesPage() {
   return (
     <>
+      <JsonLd data={capabilities.map(serviceSchema)} />
       <main className="relative z-10 bg-ink">
         <PageHero
           eyebrow="Services"
@@ -61,7 +65,7 @@ export default function ServicesPage() {
               <div className="lg:col-span-7">
                 <FadeUp>
                   <p className="font-mono text-xs text-signal">{c.index}</p>
-                  <h2 className="display mt-4 text-[clamp(2.4rem,4.6vw,4.4rem)] text-white">{c.title}</h2>
+                  <h2 className="display mt-4 text-[clamp(2.4rem,4.6vw,4.4rem)] text-white"><Link href={`/services/${c.slug}`} className="transition-colors hover:text-signal">{c.title}</Link></h2>
                   <p className="mt-6 max-w-[50ch] text-lg leading-relaxed text-fog md:text-xl">{c.pitch}</p>
                 </FadeUp>
 
@@ -115,7 +119,7 @@ export default function ServicesPage() {
                         <p className="display mt-1 text-4xl text-white">{c.timeline}</p>
                       </div>
                     </div>
-                    <Button href={`/contact?service=${c.slug}`}>Start this project</Button>
+                    <div className="flex flex-wrap gap-3"><Button href={`/services/${c.slug}`} variant="ghost">Explore service</Button><Button href={`/contact?service=${c.slug}`}>Start this project</Button></div>
                   </div>
                 </FadeUp>
               </div>

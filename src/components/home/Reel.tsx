@@ -1,15 +1,15 @@
 'use client';
 
-import Image from 'next/image';
 import { motion, useReducedMotion, useScroll, useTransform } from 'framer-motion';
 import { useEffect, useRef, useState } from 'react';
 import { useRange } from '@/components/motion/useRange';
-import AgentConsole from './AgentConsole';
+import ServicesMotion from './ServicesMotion';
+import ProjectVisual from '@/components/work/ProjectVisual';
+import { showcaseProjects } from '@/lib/content';
 
-function Tag({ children, live }: { children: string; live?: boolean }) {
+function Tag({ children }: { children: string }) {
   return (
-    <span className="absolute left-3 top-3 inline-flex items-center gap-1.5 rounded-full bg-ink/85 px-2.5 py-1 font-mono text-[11px] uppercase tracking-[0.1em] text-fog backdrop-blur">
-      {live && <span className="h-1.5 w-1.5 rounded-full bg-signal" />}
+    <span className="absolute left-3 top-3 inline-flex max-w-[calc(100%-1.5rem)] items-center gap-1.5 rounded-full bg-ink/85 px-2.5 py-1 font-mono text-[9px] uppercase tracking-[0.1em] text-fog backdrop-blur md:text-[11px]">
       {children}
     </span>
   );
@@ -26,29 +26,29 @@ function Mosaic({ headerOpacity }: { headerOpacity?: ReturnType<typeof useRange>
           One studio. <span className="text-white/45">Five ways to grow.</span>
         </p>
         <p className="hidden font-mono text-[11px] uppercase tracking-[0.12em] text-muted lg:block">
-          Agents · AI products · SaaS · Software · Web
+          Web · Agents · Software · AI products · SaaS
         </p>
       </motion.div>
-      <div className="grid min-h-0 flex-1 grid-cols-2 grid-rows-[1.4fr_1fr] gap-2 md:grid-cols-[1.4fr_1fr_1fr] md:grid-rows-2 md:gap-3">
+      <div className="grid min-h-0 flex-1 grid-cols-2 grid-rows-[1.2fr_1fr_1fr] gap-2 md:grid-cols-[1.4fr_1fr_1fr] md:grid-rows-2 md:gap-3">
         <div className="col-span-2 min-h-0 overflow-hidden rounded-2xl border border-line md:col-span-1 md:row-span-2">
-          <AgentConsole />
+          <ServicesMotion />
         </div>
-        <div className="relative overflow-hidden rounded-2xl bg-paper">
-          <Image src="/clients/themall.jpg" alt="The Mall BD e-commerce platform" fill className="object-cover" sizes="33vw" />
-          <Tag live>The Mall BD · Live</Tag>
-        </div>
-        <div className="relative overflow-hidden rounded-2xl border border-line">
-          <Image src="/art/saas.svg" alt="SaaS dashboard concept" fill className="object-cover" sizes="33vw" />
-          <Tag>SaaS · Concept</Tag>
-        </div>
-        <div className="relative hidden overflow-hidden rounded-2xl border border-line md:block">
-          <Image src="/art/software.svg" alt="Custom ERP system concept" fill className="object-cover" sizes="33vw" />
-          <Tag>Software · Concept</Tag>
-        </div>
-        <div className="relative hidden overflow-hidden rounded-2xl bg-paper md:block">
-          <Image src="/clients/dg.jpg" alt="Directors Guild website" fill className="object-cover" sizes="33vw" />
-          <Tag live>Directors Guild · Live</Tag>
-        </div>
+        {showcaseProjects.map((project) => (
+          <a
+            key={project.name}
+            href={project.url}
+            target="_blank"
+            rel="noopener noreferrer"
+            aria-label={`Visit ${project.name} (opens in a new tab)`}
+            className="group relative min-h-0 overflow-hidden rounded-2xl border border-line outline-offset-[-3px] focus-visible:outline-2 focus-visible:outline-signal"
+          >
+            {/* Lifted out by CardHandoff when the Work section takes over. */}
+            <div data-handoff-src={project.slug} className="absolute inset-0">
+              <ProjectVisual project={project} sizes="(min-width: 768px) 30vw, 48vw" />
+              <Tag>{project.mockup?.eyebrow ?? project.tags[0]}</Tag>
+            </div>
+          </a>
+        ))}
       </div>
     </div>
   );
@@ -100,7 +100,7 @@ export default function Reel() {
     return (
       <section className="py-16 md:py-28" aria-label="What we build">
         <div className="wrap">
-          <div className="aspect-[4/5] overflow-hidden rounded-[28px] border border-line md:aspect-[16/9]">
+          <div className="h-[max(780px,100svh)] overflow-hidden rounded-[28px] border border-line md:aspect-[16/9] md:h-auto">
             <Mosaic />
           </div>
         </div>

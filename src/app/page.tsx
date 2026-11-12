@@ -10,18 +10,20 @@ import Engagements from '@/components/home/Engagements';
 import Fractional from '@/components/home/Fractional';
 import FAQ from '@/components/home/FAQ';
 import Footer from '@/components/site/Footer';
-import { faqs } from '@/lib/content';
+import { faqs, capabilities } from '@/lib/content';
+import { faqSchema, pageMetadata } from '@/lib/seo';
+import JsonLd from '@/components/site/JsonLd';
 
-const faqJsonLd = {
-  '@context': 'https://schema.org',
-  '@type': 'FAQPage',
-  mainEntity: faqs.map((f) => ({ '@type': 'Question', name: f.question, acceptedAnswer: { '@type': 'Answer', text: f.answer } })),
-};
+export const metadata = pageMetadata({
+  title: 'Websites, AI & Software Development in Bangladesh',
+  description: `Seltiv is a Dhaka-based product studio for websites, e-commerce, AI agents, custom software, AI products and SaaS. Projects start from ${capabilities[0].from} USD.`,
+  path: '/',
+});
 
 export default function Home() {
   return (
     <>
-      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(faqJsonLd) }} />
+      <JsonLd data={faqSchema(faqs)} />
       <main className="relative z-10 bg-ink">
         <Hero />
         <Manifesto />

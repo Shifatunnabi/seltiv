@@ -1,4 +1,6 @@
 import type { Metadata } from 'next';
+import Link from 'next/link';
+import { pageMetadata } from '@/lib/seo';
 import PageHero from '@/components/site/PageHero';
 import Footer from '@/components/site/Footer';
 import Engagements from '@/components/home/Engagements';
@@ -6,12 +8,11 @@ import FAQ from '@/components/home/FAQ';
 import FadeUp from '@/components/motion/FadeUp';
 import { capabilities } from '@/lib/content';
 
-export const metadata: Metadata = {
-  title: 'Pricing — Transparent engagements for AI, software & websites',
-  description:
-    'Clear starting prices for websites, AI agents, AI products, SaaS and custom software. Fixed quotes before work begins, milestone billing and monthly partner plans.',
-  alternates: { canonical: '/pricing' },
-};
+export const metadata: Metadata = pageMetadata({
+  title: 'Website, AI & Software Development Pricing',
+  description: `Websites from ${capabilities[0].from}, AI agents from ${capabilities[1].from} and custom software from ${capabilities[2].from}. Compare all five Seltiv services and request a scoped quote.`,
+  path: '/pricing',
+});
 
 const always = [
   ['Senior team', 'Strategists, designers and engineers who have shipped before. No hand-offs to juniors.'],
@@ -41,15 +42,15 @@ export default function PricingPage() {
             <ul className="border-t border-line">
               {capabilities.map((c, i) => (
                 <FadeUp key={c.slug} as="li" delay={i * 0.04}>
-                  <a
-                    href={`/services#${c.slug}`}
+                  <Link
+                    href={`/services/${c.slug}`}
                     className="group grid grid-cols-[1fr_auto] items-baseline gap-4 border-b border-line py-6 md:grid-cols-[80px_1fr_200px_160px]"
                   >
                     <span className="hidden font-mono text-xs text-muted md:block">{c.index}</span>
                     <span className="text-2xl tracking-tight text-white transition-colors group-hover:text-signal md:text-3xl">{c.title}</span>
                     <span className="hidden font-mono text-xs uppercase tracking-[0.14em] text-muted md:block">{c.timeline}</span>
                     <span className="display text-right text-2xl text-white md:text-3xl">{c.from}</span>
-                  </a>
+                  </Link>
                 </FadeUp>
               ))}
             </ul>

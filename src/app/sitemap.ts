@@ -1,13 +1,12 @@
 import type { MetadataRoute } from 'next';
-import { SITE_URL } from '@/lib/content';
+import { projects, capabilities } from '@/lib/content';
+import { absoluteUrl, CONTENT_UPDATED } from '@/lib/seo';
 
 export default function sitemap(): MetadataRoute.Sitemap {
-  const routes = ['', '/services', '/work', '/pricing', '/contact'];
+  const routes = ['/', '/services', '/work', '/pricing', '/contact', ...capabilities.map((service) => `/services/${service.slug}`)];
 
-  return routes.map((route) => ({
-    url: `${SITE_URL}${route}`,
-    lastModified: new Date(),
-    changeFrequency: 'weekly',
-    priority: route === '' ? 1 : 0.8,
-  }));
+  return [
+    ...routes.map((route) => ({ url: absoluteUrl(route), lastModified: CONTENT_UPDATED })),
+    ...projects.map((project) => ({ url: absoluteUrl(`/work/${project.slug}`), lastModified: CONTENT_UPDATED, images: [absoluteUrl(project.image)] })),
+  ];
 }

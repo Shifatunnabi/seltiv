@@ -1,42 +1,39 @@
 'use client';
 
-import Image from 'next/image';
 import Link from 'next/link';
 import { useRangeUnit } from '@/components/motion/useRange';
 import { motion, useReducedMotion, useScroll, useTransform } from 'framer-motion';
 import { useLayoutEffect, useRef, useState } from 'react';
-import { projects } from '@/lib/content';
+import { projects, featuredProjects } from '@/lib/content';
+import { getHomepageProjectHref } from '@/lib/projects';
 import SplitReveal from '@/components/motion/SplitReveal';
 import Button from '@/components/ui/Button';
+import ProjectVisual from '@/components/work/ProjectVisual';
+import CardHandoff from './CardHandoff';
 
-const featured = projects.slice(0, 7);
+const featured = featuredProjects;
 
 function Card({ p, i }: { p: (typeof projects)[number]; i: number }) {
-  const external = p.url !== '#';
-  const Comp = external ? 'a' : 'div';
+  const href = getHomepageProjectHref(p);
+  const external = href.startsWith('https://');
   return (
-    <Comp
-      {...(external ? { href: p.url, target: '_blank', rel: 'noopener noreferrer' } : {})}
+    <Link
+      href={href}
+      {...(external ? { target: '_blank', rel: 'noopener noreferrer' } : {})}
       data-card
       className="group block w-[78vw] shrink-0 rounded-[22px] outline-offset-4 focus-visible:outline-2 focus-visible:outline-ink sm:w-[46vw] lg:w-[30vw]"
     >
-      <div className="relative aspect-[4/3.4] overflow-hidden rounded-[22px] bg-paper-2">
-        <Image
-          src={p.image}
-          alt={`${p.name} project`}
-          fill
-          sizes="(min-width:1024px) 30vw, (min-width:640px) 46vw, 78vw"
-          className="object-cover transition-transform duration-[1.2s] ease-[cubic-bezier(.16,1,.3,1)] group-hover:scale-[1.06]"
-        />
-        <div className="absolute left-4 top-4 flex gap-1.5">
-          {p.tags.map((t) => (
+      <div data-handoff-dst={p.slug} className="relative aspect-[4/3.4] overflow-hidden rounded-[22px] bg-paper-2">
+        <ProjectVisual project={p} sizes="(min-width:1024px) 30vw, (min-width:640px) 46vw, 78vw" />
+        <div className="absolute left-4 right-4 top-4 flex flex-wrap gap-1.5">
+          {(p.mockup ? [p.mockup.eyebrow] : p.tags).map((t) => (
             <span key={t} className="rounded-full bg-ink/85 px-2.5 py-1 font-mono text-[10px] uppercase tracking-[0.12em] text-white backdrop-blur">
               {t}
             </span>
           ))}
         </div>
         <span className="badge-arrow absolute bottom-4 right-4 grid h-11 w-11 place-items-center overflow-hidden rounded-full bg-ink/85 text-white backdrop-blur transition-all duration-500 group-hover:scale-110 group-hover:bg-signal group-hover:text-ink">
-          <span aria-hidden>↗</span>
+          <span aria-hidden>{external ? '↗' : '→'}</span>
         </span>
       </div>
       <div className="mt-4 flex items-start justify-between gap-4 text-ink">
@@ -45,10 +42,10 @@ function Card({ p, i }: { p: (typeof projects)[number]; i: number }) {
           <p className="mt-0.5 text-[15px] text-[#5d6660]">{p.summary}</p>
         </div>
         <span className="font-mono text-xs text-[#5d6660]">
-          {String(i + 1).padStart(2, '0')} / {p.year}
+          {String(i + 1).padStart(2, '0')}
         </span>
       </div>
-    </Comp>
+    </Link>
   );
 }
 
@@ -92,13 +89,14 @@ export default function Work() {
       className="relative rounded-t-[32px] bg-paper text-ink"
       style={{ height: reduce ? undefined : `calc(100svh + ${dist}px)` }}
     >
+      {!reduce && <CardHandoff section={section} />}
       <div className={reduce ? 'py-20' : 'sticky top-0 flex h-[100svh] flex-col justify-center overflow-hidden'}>
         <div className="wrap mb-8 flex items-end justify-between gap-6 md:mb-12" style={{ maxWidth: 'none' }}>
           <div>
-            <p className="eyebrow on-paper mb-5">Selected work · 2023–2025</p>
+            <p className="eyebrow on-paper mb-5">Selected work</p>
             <SplitReveal
               className="display text-[clamp(2.25rem,5vw,4.5rem)] leading-[1.02]"
-              segments={['Shipped, live, ', { text: 'working.', className: 'serif-accent' }]}
+              segments={['Built around ', { text: 'real work.', className: 'serif-accent' }]}
             />
           </div>
           <div className="hidden md:block">

@@ -1,6 +1,6 @@
 import type { MetadataRoute } from 'next';
 
-const SITE_URL = 'https://www.seltiv.com';
+import { SITE_URL } from '@/lib/content';
 
 export default function robots(): MetadataRoute.Robots {
   return {
@@ -10,5 +10,6 @@ export default function robots(): MetadataRoute.Robots {
       disallow: '/api/',
     },
     sitemap: `${SITE_URL}/sitemap.xml`,
+    host: SITE_URL,
   };
 }

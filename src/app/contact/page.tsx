@@ -1,16 +1,16 @@
 import type { Metadata } from 'next';
+import { pageMetadata } from '@/lib/seo';
 import PageHero from '@/components/site/PageHero';
 import Footer from '@/components/site/Footer';
 import ContactForm from '@/components/contact/ContactForm';
 import FadeUp from '@/components/motion/FadeUp';
 import { CONTACT_EMAIL, PHONES } from '@/lib/content';
 
-export const metadata: Metadata = {
-  title: 'Contact — Start a project with Seltiv',
-  description:
-    'Tell us about your AI agent, AI product, SaaS, custom software or website project. We reply within one business day with next steps.',
-  alternates: { canonical: '/contact' },
-};
+export const metadata: Metadata = pageMetadata({
+  title: 'Contact Seltiv — Discuss Your Website, AI or Software Project',
+  description: 'Contact Seltiv in Dhaka about websites, e-commerce, AI agents, custom software, AI products or SaaS. Get a scoped quote and clear next steps.',
+  path: '/contact',
+});
 
 const next = [
   ['Reply within a day', 'A senior team member reads your brief and replies with questions or a time to talk.'],

@@ -1,0 +1,89 @@
+.stage {
+  position: absolute;
+  inset: 0;
+  container-type: size;
+  overflow: hidden;
+  isolation: isolate;
+  color: #c9cfcb;
+  background: radial-gradient(ellipse at 55% 48%, color-mix(in srgb, var(--project-accent) 20%, transparent), transparent 68%), #0b120e;
+}
+
+.grid {
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  opacity: 0.3;
+  background-image: linear-gradient(#ffffff09 1px, transparent 1px), linear-gradient(90deg, #ffffff09 1px, transparent 1px);
+  background-size: 9cqw 9cqw;
+  mask-image: radial-gradient(ellipse, #000, transparent 80%);
+}
+
+.wordmark {
+  position: absolute;
+  top: max(38px, 9%);
+  left: 7%;
+  color: var(--project-accent);
+  opacity: 0.2;
+  font-size: 11cqw;
+  font-weight: 500;
+  line-height: 1;
+  letter-spacing: -0.06em;
+  white-space: nowrap;
+}
+
+.browser {
+  position: absolute;
+  top: max(54px, 23%);
+  left: 7%;
+  width: 86%;
+  overflow: hidden;
+  border: 1px solid #ffffff30;
+  border-radius: 1.6cqw;
+  background: #141b17;
+  box-shadow: 0 5cqw 9cqw #0009, 0 0 5cqw color-mix(in srgb, var(--project-accent) 9%, transparent);
+  transform: none;
+  transition: transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.stage:hover .browser {
+  transform: translateY(-1cqw);
+}
+
+.toolbar {
+  display: flex;
+  height: 5cqw;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 2cqw;
+  border-bottom: 1px solid #ffffff0f;
+  font-family: var(--font-mono);
+  font-size: 1.5cqw;
+  color: #a7b0aa;
+}
+
+.dots { display: flex; gap: 0.65cqw; }
+.dots i { width: 0.85cqw; height: 0.85cqw; border-radius: 50%; background: #59635c; }
+.dots i:first-child { background: var(--project-accent); }
+.address { text-align: center; }
+.expand { font-size: 2cqw; }
+.screen { position: relative; aspect-ratio: 1.85; background: #f3f2ee; }
+
+@container (max-aspect-ratio: 1 / 1) {
+  .browser { top: max(54px, 26%); }
+  .wordmark { top: max(38px, 15%); }
+}
+
+@container (min-aspect-ratio: 3 / 2) {
+  .browser { left: 12%; width: 76%; }
+  .wordmark { left: 12%; top: max(38px, 7%); font-size: 9cqw; }
+}
+
+@container (max-width: 260px) {
+  .wordmark { top: max(52px, 15%); }
+  .browser { top: max(76px, 26%); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .browser { transform: none; transition: none; }
+  .stage:hover .browser { transform: none; }
+}

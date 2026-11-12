@@ -1,6 +1,9 @@
 import { fractional } from '@/lib/content';
 import FadeUp from '@/components/motion/FadeUp';
 import Link from 'next/link';
+import { FiPenTool, FiTrendingUp, FiFilm } from 'react-icons/fi';
+
+const icons = [FiPenTool, FiTrendingUp, FiFilm];
 
 export default function Fractional() {
   return (
@@ -19,15 +22,18 @@ export default function Fractional() {
               </p>
             </div>
             <ul className="grid gap-px overflow-hidden rounded-2xl bg-line sm:grid-cols-3 lg:col-span-8">
-              {fractional.map((f) => (
-                <li key={f.title} className="flex flex-col justify-between gap-8 bg-ink p-6">
-                  <span className="font-mono text-[11px] uppercase tracking-[0.14em] text-muted">Fractional</span>
-                  <div>
-                    <p className="text-lg font-medium text-white">{f.title}</p>
-                    <p className="mt-1.5 text-sm leading-relaxed text-fog">{f.desc}</p>
-                  </div>
-                </li>
-              ))}
+              {fractional.map((f, i) => {
+                const Icon = icons[i];
+                return (
+                  <li key={f.title} className="flex flex-col justify-between gap-8 bg-ink p-6">
+                    <Icon className="h-6 w-6 text-signal" strokeWidth={1.5} aria-hidden="true" focusable="false" />
+                    <div>
+                      <p className="text-lg font-medium text-white">{f.title}</p>
+                      <p className="mt-1.5 text-sm leading-relaxed text-fog">{f.desc}</p>
+                    </div>
+                  </li>
+                );
+              })}
             </ul>
             <div className="lg:col-span-12">
               <Link href="/contact" className="link-u font-mono text-xs uppercase tracking-[0.14em] text-white">
