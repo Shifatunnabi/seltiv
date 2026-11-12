@@ -3,6 +3,7 @@ import { Geist, Geist_Mono, Instrument_Serif } from 'next/font/google';
 import './globals.css';
 import SmoothScroll from '@/components/motion/SmoothScroll';
 import Header from '@/components/site/Header';
+import PageLoader from '@/components/site/PageLoader';
 import { SITE_URL } from '@/lib/content';
 import { organizationSchema, pageMetadata, websiteSchema } from '@/lib/seo';
 import JsonLd from '@/components/site/JsonLd';
@@ -42,6 +43,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
   return (
     <html lang="en" className={`${geist.variable} ${geistMono.variable} ${instrument.variable}`}>
       <body>
+        <PageLoader />
         <JsonLd data={[organizationSchema, websiteSchema]} />
         <SmoothScroll />
         <Header />

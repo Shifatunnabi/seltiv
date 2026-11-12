@@ -1,0 +1,113 @@
+.panel {
+  position: fixed;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  max-width: none;
+  max-height: none;
+  margin: 0;
+  padding: 0;
+  border: 0;
+  overflow: hidden;
+  overscroll-behavior: contain;
+  color: var(--color-signal);
+  background: radial-gradient(ellipse at center, #0d2116, var(--color-ink) 68%);
+}
+
+.panel[open] {
+  display: grid;
+  place-items: center;
+}
+
+.panel::backdrop {
+  background: transparent;
+}
+
+.panel::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(#77c99838 1px, transparent 1px) center / 20px 20px;
+  mask-image: radial-gradient(ellipse 48% 55% at center, black, transparent);
+}
+
+.lockup {
+  position: relative;
+  display: grid;
+  justify-items: center;
+  gap: 16px;
+}
+
+.frame {
+  --tick: #72db9e88;
+  display: grid;
+  place-items: center;
+  width: 124px;
+  height: 124px;
+  background:
+    conic-gradient(from 90deg at 1px 1px, transparent 25%, var(--tick) 0) top left,
+    conic-gradient(from 180deg at calc(100% - 1px) 1px, transparent 25%, var(--tick) 0) top right,
+    conic-gradient(from 0deg at 1px calc(100% - 1px), transparent 25%, var(--tick) 0) bottom left,
+    conic-gradient(from 270deg at calc(100% - 1px) calc(100% - 1px), transparent 25%, var(--tick) 0) bottom right;
+  background-size: 8px 8px;
+  background-repeat: no-repeat;
+}
+
+/* The lower piece is already rotated 180° in the SVG, so the same
+   translation brings the two halves in from opposite corners. */
+.frame path {
+  animation: assemble 560ms var(--ease-out-expo) both;
+}
+
+.signature {
+  color: var(--color-fog);
+  font: 500 10px/1.2 ui-monospace, monospace;
+  letter-spacing: 0.24em;
+  text-transform: uppercase;
+}
+
+.track {
+  width: 72px;
+  height: 2px;
+  overflow: hidden;
+  background: #254131;
+}
+
+.track::after {
+  content: '';
+  display: block;
+  width: 50%;
+  height: 100%;
+  background: var(--color-signal);
+  animation: scan 1.35s ease-in-out infinite;
+}
+
+.panel[data-leaving] {
+  animation: lift 580ms var(--ease-in-out-quart) both;
+}
+
+.panel[data-leaving] .lockup {
+  animation: dissolve 320ms ease-out both;
+}
+
+@keyframes assemble {
+  from { opacity: 0.25; transform: translate(-18px, -18px); }
+  to { opacity: 1; transform: none; }
+}
+
+@keyframes scan {
+  from { transform: translateX(-100%); }
+  to { transform: translateX(200%); }
+}
+
+@keyframes lift {
+  to { transform: translateY(-101%); }
+}
+
+@keyframes dissolve {
+  to { opacity: 0; transform: translateY(-10px); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .frame path, .track::after { animation: none; }
+}

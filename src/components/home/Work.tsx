@@ -2,7 +2,8 @@
 
 import Link from 'next/link';
 import { useRangeUnit } from '@/components/motion/useRange';
-import { motion, useReducedMotion, useScroll, useTransform } from 'framer-motion';
+import { motion, useScroll, useTransform } from 'framer-motion';
+import { useMotionPreference } from '@/components/motion/useMotionPreference';
 import { useLayoutEffect, useRef, useState } from 'react';
 import { projects, featuredProjects } from '@/lib/content';
 import { getHomepageProjectHref } from '@/lib/projects';
@@ -50,7 +51,7 @@ function Card({ p, i }: { p: (typeof projects)[number]; i: number }) {
 }
 
 export default function Work() {
-  const reduce = useReducedMotion();
+  const reduce = useMotionPreference();
   const section = useRef<HTMLElement>(null);
   const track = useRef<HTMLDivElement>(null);
   const [dist, setDist] = useState(0);

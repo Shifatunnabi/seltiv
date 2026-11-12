@@ -1,7 +1,8 @@
 'use client';
 
-import { motion, useReducedMotion, useScroll, useTransform } from 'framer-motion';
+import { motion, useScroll, useTransform } from 'framer-motion';
 import { useEffect, useRef, useState } from 'react';
+import { useMotionPreference } from '@/components/motion/useMotionPreference';
 import { useRange } from '@/components/motion/useRange';
 import ServicesMotion from './ServicesMotion';
 import ProjectVisual from '@/components/work/ProjectVisual';
@@ -59,7 +60,20 @@ function Mosaic({ headerOpacity }: { headerOpacity?: ReturnType<typeof useRange>
  * to fill the viewport and reveals a mosaic of what we build.
  */
 export default function Reel() {
-  const reduce = useReducedMotion();
+  const reduce = useMotionPreference();
+  if (!reduce) return <AnimatedReel />;
+  return (
+    <section className="py-16 md:py-28" aria-label="What we build">
+      <div className="wrap">
+        <div className="h-[max(780px,100svh)] overflow-hidden rounded-[28px] border border-line md:aspect-[16/9] md:h-auto">
+          <Mosaic />
+        </div>
+      </div>
+    </section>
+  );
+}
+
+function AnimatedReel() {
   const ref = useRef<HTMLElement>(null);
   const stickyRef = useRef<HTMLDivElement>(null);
   const { scrollYProgress } = useScroll({ target: ref, offset: ['start start', 'end end'] });
@@ -95,18 +109,6 @@ export default function Reel() {
   const mosaicScale = useRange(scrollYProgress, [0.08, 0.45], [1.2, 1]);
   const thumbOpacity = useRange(scrollYProgress, [0, 0.12], [1, 0]);
   const headerOpacity = useRange(scrollYProgress, [0.42, 0.55], [0, 1]);
-
-  if (reduce) {
-    return (
-      <section className="py-16 md:py-28" aria-label="What we build">
-        <div className="wrap">
-          <div className="h-[max(780px,100svh)] overflow-hidden rounded-[28px] border border-line md:aspect-[16/9] md:h-auto">
-            <Mosaic />
-          </div>
-        </div>
-      </section>
-    );
-  }
 
   return (
     <section ref={ref} className="relative h-[220svh]" aria-label="What we build, in motion">
