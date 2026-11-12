@@ -16,14 +16,14 @@ export function pageMetadata({ title, description, path, imageKey }: {
     title: { absolute: `SELTIV | ${title}` },
     description,
     alternates: { canonical: absoluteUrl(path) },
-    openGraph: { type: 'website', siteName: 'Seltiv', locale: 'en_US', title: `SELTIV | ${title}`, description, url: absoluteUrl(path), images: [image] },
+    openGraph: { type: 'website', siteName: 'SELTIV', locale: 'en_US', title: `SELTIV | ${title}`, description, url: absoluteUrl(path), images: [image] },
     twitter: { card: 'summary_large_image', title: `SELTIV | ${title}`, description, images: [image] },
   };
 }
 
 export const organizationSchema = {
   '@context': 'https://schema.org', '@type': 'Organization', '@id': ORGANIZATION_ID,
-  name: 'Seltiv', url: SITE_URL,
+  name: 'SELTIV', alternateName: 'Seltiv', url: SITE_URL,
   description: 'A product studio based in Dhaka, Bangladesh, building websites, e-commerce, AI agents, custom software, AI products and SaaS platforms for local and international teams.',
   logo: { '@type': 'ImageObject', url: absoluteUrl('/icon.png') },
   email: CONTACT_EMAIL, telephone: PHONES[0].raw,
@@ -40,7 +40,7 @@ export const organizationSchema = {
 
 export const websiteSchema = {
   '@context': 'https://schema.org', '@type': 'WebSite', '@id': WEBSITE_ID,
-  name: 'Seltiv', url: `${SITE_URL}/`, inLanguage: 'en', publisher: { '@id': ORGANIZATION_ID },
+  name: 'SELTIV', alternateName: 'Seltiv', url: `${SITE_URL}/`, inLanguage: 'en', publisher: { '@id': ORGANIZATION_ID },
 };
 
 export function breadcrumbSchema(items: { name: string; path: string }[]) {

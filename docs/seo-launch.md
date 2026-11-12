@@ -1,5 +1,27 @@
 # Search and social launch
 
+## Live search appearance audit — 12 November 2026
+
+The public `https://seltiv.com` site now serves the branded metadata and all 21
+sitemap pages. The live SEO check passed for canonical URLs, titles, descriptions,
+social previews, business data and crawl rules. Separate requests using a
+Googlebot user-agent confirmed one unique title, one unique description and one
+main heading on the homepage and all five service pages; both search icons
+responded with HTTP 200. This checks served content, not Google's indexed copy
+or access from Google's crawler IPs.
+
+The latest local refinement consistently uses `SELTIV` as the preferred WebSite,
+Organization, Open Graph and application name, retaining `Seltiv` as an alternate
+name in structured data. Deploy this refinement with the next reviewed release.
+The audit script also checks duplicate titles/descriptions, main headings,
+business identity consistency and response headers that could suppress search.
+
+After deployment, use an owner-authorized Search Console account to inspect the
+homepage and service URLs, request indexing and submit or confirm the sitemap.
+Google may select different title text or snippets for individual searches, and
+may omit a repeated brand name in a title link. Metadata is a preference, not a
+guarantee of exact appearance, ranking, sitelinks or recrawl timing.
+
 ## Implemented in this checkout
 
 - Canonical host: `https://seltiv.com`, matching the live redirect from `www`.

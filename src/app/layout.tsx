@@ -25,9 +25,9 @@ export const metadata: Metadata = {
   }),
   metadataBase: new URL(SITE_URL),
   title: { default: 'SELTIV | Websites, AI & Software Development in Bangladesh', template: 'SELTIV | %s' },
-  applicationName: 'Seltiv',
-  creator: 'Seltiv',
-  publisher: 'Seltiv',
+  applicationName: 'SELTIV',
+  creator: 'SELTIV',
+  publisher: 'SELTIV',
   icons: { icon: '/icon.png', shortcut: '/favicon.ico', apple: '/icon.png' },
   robots: { index: true, follow: true, googleBot: { index: true, follow: true, 'max-image-preview': 'large', 'max-snippet': -1, 'max-video-preview': -1 } },
   verification: {

@@ -19,6 +19,8 @@ assert.equal(urls.filter((url) => url.includes('/work/')).length, 11);
 assert.equal(new Set(urls).size, urls.length);
 assert.ok(!sitemap.includes('https://www.seltiv.com'));
 
+const titles = new Set();
+const descriptions = new Set();
 let cursor = 0;
 await Promise.all(Array.from({ length: 4 }, async () => {
   while (cursor < urls.length) {
@@ -27,6 +29,7 @@ await Promise.all(Array.from({ length: 4 }, async () => {
     const path = new URL(url).pathname;
     const response = await fetch(`${origin}${path}`, { headers: { 'User-Agent': 'facebookexternalhit/1.1' } });
     assert.equal(response.status, 200, path);
+    assert.ok(!/noindex|nosnippet/i.test(response.headers.get('x-robots-tag') || ''), `${path} search response headers`);
     const html = await response.text();
     const head = html.split('</head>')[0];
     const metas = [...head.matchAll(/<meta\b[^>]*>/g)].map((m) => attributes(m[0]));
@@ -34,8 +37,15 @@ await Promise.all(Array.from({ length: 4 }, async () => {
     const links = [...head.matchAll(/<link\b[^>]*>/g)].map((m) => attributes(m[0]));
     assert.equal(new URL(links.find((link) => link.rel === 'canonical')?.href).href, new URL(url).href, `${path} canonical`);
     const title = decode(head.match(/<title>(.*?)<\/title>/s)?.[1] || '');
+    assert.equal([...html.matchAll(/<title>.*?<\/title>/gs)].length, 1, `${path} single title`);
     assert.ok(title.startsWith('SELTIV | '), `${path} title prefix`);
-    assert.ok(getMeta('description')?.length > 70, `${path} description`);
+    assert.ok(!titles.has(title), `${path} unique title`);
+    titles.add(title);
+    const description = getMeta('description');
+    assert.ok(description?.length > 70, `${path} description`);
+    assert.ok(!descriptions.has(description), `${path} unique description`);
+    descriptions.add(description);
+    assert.equal((html.match(/<h1\b/g) || []).length, 1, `${path} main heading`);
     assert.equal(new URL(getMeta('og:url')).href, new URL(url).href, `${path} share URL`);
     assert.ok(getMeta('og:title')?.startsWith('SELTIV | '), `${path} share title`);
     assert.equal(getMeta('twitter:card'), 'summary_large_image');
@@ -52,6 +62,9 @@ await Promise.all(Array.from({ length: 4 }, async () => {
       const parsed = JSON.parse(m[1]); return Array.isArray(parsed) ? parsed : [parsed];
     });
     const org = data.find((item) => item['@type'] === 'Organization');
+    const website = data.find((item) => item['@type'] === 'WebSite');
+    assert.equal(website?.name, getMeta('og:site_name'), `${path} consistent site name`);
+    assert.equal(website?.publisher?.['@id'], org?.['@id'], `${path} business identity`);
     assert.equal(org?.url, canonicalOrigin);
     assert.ok(org.sameAs.includes('https://www.facebook.com/people/Seltiv/61587017200359/'));
     assert.ok(org.sameAs.includes('https://bd.linkedin.com/company/seltiv'));
