@@ -20,7 +20,7 @@ selection, destinations, image sources and case-study copy.
 | 1 | DealHobe | Yes | New capture of https://dealhobe.com |
 | 2 | Seltiv SLMS | Yes | Finance overview from the supplied local project; https://seltiv-slms.netlify.app/ |
 | 3 | ProMusic | Yes | New capture of https://promusic.com.bd |
-| 4 | Tofiza | Yes | New capture of https://tofiza.com |
+| 4 | Tofiza | Yes | Fresh 1910×947 desktop capture of https://tofiza.com (`tofiza-desktop.webp`); replaces a capture with a blank right-hand strip. Scrollbar trimmed. |
 | 5 | Agency & Corporate ERP | Yes; Contact | Original vector concept interface |
 | 6 | Cinema Hall & Ticketing | No | New interface preview informed by the supplied cinema repository |
 | 7 | AI Support Agent | Yes; Contact | Original vector concept interface |

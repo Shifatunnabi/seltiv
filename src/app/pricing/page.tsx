@@ -28,13 +28,9 @@ export default function PricingPage() {
         <PageHero
           eyebrow="Pricing"
           title={['Clear scope.\n', { text: 'Honest pricing.', className: 'text-white/40' }]}
-          intro="Three ways to work with us. Every project starts with a fixed quote, so you know exactly what you get and what it costs before we write a line of code."
+          intro="Starting prices for every service, plus monthly packages for brand, marketing and content. Every project starts with a fixed quote, so you know exactly what you get and what it costs before we write a line of code."
         />
-        <div className="-mt-20">
-          <Engagements showHeading={false} />
-        </div>
-
-        <section className="pb-28">
+        <section>
           <div className="wrap">
             <FadeUp>
               <p className="eyebrow mb-8">Starting prices by service</p>
@@ -54,8 +50,14 @@ export default function PricingPage() {
                 </FadeUp>
               ))}
             </ul>
+          </div>
+        </section>
 
-            <div className="mt-20 grid gap-px overflow-hidden rounded-[26px] border border-line bg-line sm:grid-cols-2 lg:grid-cols-4">
+        <Engagements variant="fractional" />
+
+        <section className="pb-28">
+          <div className="wrap">
+            <div className="grid gap-px overflow-hidden rounded-[26px] border border-line bg-line sm:grid-cols-2 lg:grid-cols-4">
               {always.map(([t, d], i) => (
                 <FadeUp key={t} delay={i * 0.06} className="bg-surface p-7">
                   <p className="font-mono text-xs text-signal">0{i + 1}</p>

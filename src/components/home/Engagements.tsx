@@ -1,30 +1,48 @@
 'use client';
 
 import { motion } from 'framer-motion';
-import { plans } from '@/lib/content';
+import { fractionalPlans, plans } from '@/lib/content';
 import SplitReveal from '@/components/motion/SplitReveal';
 import Button from '@/components/ui/Button';
 
-export default function Engagements({ showHeading = true }: { showHeading?: boolean }) {
+const VARIANTS = {
+  projects: {
+    plans,
+    eyebrow: 'Engagements',
+    heading: ['Clear scope.\n', 'Honest pricing.'],
+    badge: 'Products & AI',
+    note: 'Prices in USD. Local (BDT) pricing available. Every project gets a fixed quote before work starts.',
+  },
+  fractional: {
+    plans: fractionalPlans,
+    eyebrow: 'Fractional pricing',
+    heading: ['Growth support.\n', 'One monthly price.'],
+    badge: 'Most popular',
+    note: 'Prices in USD. Local (BDT) pricing available. Ad spend is billed separately. Pause or cancel with 30 days notice.',
+  },
+} as const;
+
+export default function Engagements({ showHeading = true, variant = 'projects' }: { showHeading?: boolean; variant?: keyof typeof VARIANTS }) {
+  const v = VARIANTS[variant];
   return (
     <section id="pricing" className="relative py-16 md:py-28">
       <div className="wrap">
         {showHeading && (
           <div className="mb-12 grid gap-8 lg:grid-cols-12">
             <div className="lg:col-span-3">
-              <p className="eyebrow">Engagements</p>
+              <p className="eyebrow">{v.eyebrow}</p>
             </div>
             <div className="lg:col-span-9">
               <SplitReveal
                 className="display text-[clamp(2.25rem,5vw,4.5rem)] leading-[1.02] text-white"
-                segments={['Clear scope.\n', { text: 'Honest pricing.', className: 'text-white/40' }]}
+                segments={[v.heading[0], { text: v.heading[1], className: 'text-white/40' }]}
               />
             </div>
           </div>
         )}
 
         <div className="grid gap-4 lg:grid-cols-3">
-          {plans.map((p, i) => (
+          {v.plans.map((p, i) => (
             <motion.article
               key={p.name}
               initial={{ opacity: 0, y: 40 }}
@@ -39,7 +57,7 @@ export default function Engagements({ showHeading = true }: { showHeading?: bool
                 <h3 className="text-2xl font-medium tracking-tight">{p.name}</h3>
                 {p.featured && (
                   <span className="rounded-full border border-signal/40 px-3 py-1 font-mono text-[11px] uppercase tracking-[0.12em] text-signal">
-                    Products & AI
+                    {v.badge}
                   </span>
                 )}
               </div>
@@ -70,7 +88,7 @@ export default function Engagements({ showHeading = true }: { showHeading?: bool
           ))}
         </div>
         <p className="mt-6 font-mono text-[11px] uppercase tracking-[0.14em] text-muted">
-          Prices in USD. Local (BDT) pricing available. Every project gets a fixed quote before work starts.
+          {v.note}
         </p>
       </div>
     </section>

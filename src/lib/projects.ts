@@ -59,7 +59,7 @@ export const projects: Project[] = [
   },
   {
     slug: 'tofiza', name: 'Tofiza', tags: ['Platform', 'Travel'], featured: true,
-    image: '/projects/tofiza.webp', url: 'https://tofiza.com', status: 'Client platform',
+    image: '/projects/tofiza-desktop.webp', url: 'https://tofiza.com', status: 'Client platform',
     summary: 'Hotel discovery and booking, from search to stay.',
     mockup: { domain: 'tofiza.com', accent: '#5c9fc5', eyebrow: 'Travel aggregator' },
     caseStudy: {

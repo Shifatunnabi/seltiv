@@ -194,6 +194,38 @@ export const plans: Plan[] = [
   },
 ];
 
+/** Monthly brand, marketing and content retainers shown after the fractional section. */
+export const fractionalPlans: Plan[] = [
+  {
+    name: 'Essentials',
+    tagline: 'One channel, kept consistent',
+    price: '$299',
+    unit: 'per month',
+    bestFor: 'Businesses that want their brand and one channel looked after without hiring in-house.',
+    includes: ['Brand upkeep & design requests', '6 social posts a month', 'On-page SEO', 'Monthly performance report'],
+    cta: 'Start with Essentials',
+  },
+  {
+    name: 'Growth',
+    tagline: 'Marketing and content together',
+    price: '$699',
+    unit: 'per month',
+    featured: true,
+    bestFor: 'Teams ready to pair steady content with paid acquisition and see it measured.',
+    includes: ['Everything in Essentials', 'Paid ads management', '10 social posts + 1 short video', '1 SEO article a month', 'Monthly strategy call'],
+    cta: 'Choose Growth',
+  },
+  {
+    name: 'Scale',
+    tagline: 'A full fractional growth team',
+    price: '$1,499',
+    unit: 'per month',
+    bestFor: 'Companies that want brand, campaigns and content run as one coordinated programme.',
+    includes: ['Everything in Growth', 'Multi-channel campaigns & CRO', '3 videos + motion assets', 'Fortnightly strategy call'],
+    cta: 'Talk about Scale',
+  },
+];
+
 export const fractional = [
   { title: 'Brand identity', desc: 'Logo, visual systems and guidelines for the products we build.' },
   { title: 'Performance marketing', desc: 'SEO, paid acquisition and analytics to grow what we launch.' },

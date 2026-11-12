@@ -33,8 +33,8 @@ export default function Home() {
         <Capabilities />
         <Stack />
         <Process />
-        <Engagements />
         <Fractional />
+        <Engagements variant="fractional" />
         <FAQ />
       </main>
       <Footer />

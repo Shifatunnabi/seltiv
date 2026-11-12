@@ -13,7 +13,7 @@ export function pageMetadata({ title, description, path, imageKey }: {
   const key = imageKey ?? (path === '/' ? 'home' : path.slice(1).replaceAll('/', '-'));
   const image = { url: absoluteUrl(`/og/${key}`), width: 1200, height: 630, alt: `SELTIV | ${title}` };
   return {
-    title,
+    title: { absolute: `SELTIV | ${title}` },
     description,
     alternates: { canonical: absoluteUrl(path) },
     openGraph: { type: 'website', siteName: 'Seltiv', locale: 'en_US', title: `SELTIV | ${title}`, description, url: absoluteUrl(path), images: [image] },
